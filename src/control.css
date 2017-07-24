@@ -1,0 +1,223 @@
+/* 默认隐藏 */
+chimee-progressbar-tip,
+chimee-screen-full,
+chimee-screen-small{
+  display: none;
+}
+
+chimee-control.full chimee-screen-full,
+chimee-control.small chimee-screen-small{
+  display: inline-block;
+  width: 2em;
+  height: 100%;
+}
+
+chimee-control{
+  position: absolute;
+  display: table;
+  height: 2em;
+  line-height: 2em;
+  bottom: 0;
+  font-size: 14px;
+  background: rgba(0, 0, 0, .5);
+  user-select: none;
+  font-family: monospace;
+  transition: all .5s ease;
+}
+
+.chimee-component{
+  display: table-cell;
+  height: 2em;
+  padding: .3em;
+  box-sizing: border-box;
+  vertical-align: top;
+  cursor: pointer;
+  width: 1%;
+  line-height: 1em;
+  white-space: nowrap;
+}
+
+/*播放器状态， 播放／暂停*/
+chimee-control-state .left,
+chimee-control-state .right{
+  transition: all .4s ease-in-out;
+}
+chimee-control-state svg{
+  width: 2em;
+  height: 1.4em;
+}
+chimee-control.play .left{
+  d: path('M0.921875,0.265625L0.921875,197.074852L95.7890625,149L96.2929688,49Z');
+}
+chimee-control.pause .left{
+  d: path('M0.921875,1.265625L0.921875,198.074852L79.3611677,198.074852L79.3611677,0.258923126Z');
+}
+chimee-control.play .right{
+  d: path('M90.3142151,45.9315226L90.3142151,151.774115L201.600944,99.9938782L201.600944,98.0237571Z');
+}
+chimee-control.pause .right{
+  d: path('M126.921875,1.265625L126.921875,198.074852L205.361168,198.074852L205.361168,0.258923126Z');
+}
+
+/*播放器控制条*/
+chimee-progressbar.chimee-component{
+  width: auto;
+  padding: 0 .4em 0 1em;
+}
+chimee-progressbar-wrap{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+chimee-progressbar-all,
+chimee-progressbar-buffer,
+chimee-progressbar-bg{
+  position: absolute;
+  top: .9em;
+  left: 0;
+  display: inline-block;
+  height: 3px;
+}
+chimee-progressbar-bg{
+  width: 100%;
+  background: #4c4c4c;
+}
+chimee-progressbar-buffer{
+  width: 0;
+  background: #6f6f6f;
+}
+chimee-progressbar-all{
+	background: #de698c;
+}
+chimee-progressbar-all:after{
+	content: '';
+	position: absolute;
+	right: -.2em;
+	top: -.3em;
+	display: inline-block;
+	width: .8em;
+	height: .8em;
+	border-radius: .8em;
+	background: #fff;
+}
+chimee-progressbar-tip{
+	position: absolute;
+	bottom: .5em;
+  top: -1.5em;
+	left: 0;
+	z-index: 10;
+  padding: 0 .5em;
+	height: 1.5em;
+  background: #fff;
+  line-height: 1.5em;
+  border-radius: 4px;
+  color: #000;
+  text-align: center;
+}
+
+/*时间显示*/
+chimee-progresstime.chimee-component{
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  padding: .5em;
+}
+
+chimee-progresstime-pass,
+chimee-progresstime-total{
+  display: inline;
+}
+
+/*音量控制*/
+
+chimee-volume.chimee-component{
+  cursor: pointer;
+  white-space: nowrap;
+  padding-right: .5em;
+}
+
+chimee-volume-state{
+  display: inline-block;
+  height: 100%;
+  width: 2em;
+}
+chimee-volume-state svg{
+  width: 2em;
+  height: 1.4em;
+}
+
+chimee-volume .ring1,
+chimee-volume .ring2,
+chimee-volume .line{
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  transition: stroke-dashoffset .7s ease-in-out;
+}
+
+chimee-volume.mute .line,
+chimee-volume.mute .ring1,
+chimee-volume.mute .ring2{
+  stroke-dashoffset: 0;
+}
+
+chimee-volume.high .ring1,
+chimee-volume.high .ring2{
+  stroke-dashoffset: 0;
+}
+
+chimee-volume.low .ring2{
+  stroke-dashoffset: 0;
+}
+
+chimee-volume-bar{
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  height: 100%;
+}
+
+chimee-volume-bar-all,
+chimee-volume-bar-bg{
+  position: absolute;
+  top: .6em;
+  left: 0;
+  display: inline-block;
+  height: 3px;
+}
+chimee-volume-bar-bg{
+  width: 100%;
+  background: #4c4c4c;
+}
+chimee-volume-bar-all{
+	background: #de698c;
+}
+chimee-volume-bar-all:after{
+	content: '';
+	position: absolute;
+	right: -.2em;
+	top: -.3em;
+	display: inline-block;
+	width: .8em;
+	height: .8em;
+	border-radius: .8em;
+	background: #fff;
+}
+
+/*全屏*/
+chimee-screen-small{
+  background: url(./image/enlarge.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+chimee-screen-full{
+  background: url(./image/shrink.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
