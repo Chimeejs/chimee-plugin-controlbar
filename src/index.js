@@ -164,5 +164,5 @@ const chimeeControl = {
   }
 };
 
-module.exports = chimeeControl;
+export default chimeeControl;
 

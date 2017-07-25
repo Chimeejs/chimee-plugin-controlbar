@@ -1,0 +1,36 @@
+declare export function getAttr (el: Node, attrName: string): Attr;
+  declare export function setAttr (el: Node, attrName: string, attrVa: Attr): void;
+  declare export function addClassName (el: Node, cls: string): void;
+  declare export function removeClassName (el: Node, cls: string): void;
+  declare export function hasClassName (el: Node, cls: string): boolean;
+  declare export function removeEvent (el: Node, type: string, handler: Function, once?: boolean, capture?: boolean): void;
+  declare export function addEvent (el: Node, type: string, handler: Function, once?: boolean, capture?: boolean): void;
+  declare export function addDelegate (el: Node, selector: string, type: string, handler: Function, capture: boolean): void; 
+  declare export function removeDelegate (el: Node, selector: string, type: string, handler: Function, capture: boolean): void;
+  declare export function getStyle (el: Node, key: string): string;
+  declare export function setStyle (el: Node, key: string, val: string | number): void;
+  declare export function query (selector: string, container?: Node, toArray: boolean): Array<Node>;
+  declare export function removeEl (el: Node): void;
+  declare export function findParents (el: Node, endEl?: Node, haveEl: boolean, haveEndEl: boolean): Array<Node>;
+  declare export function $ (selector: string | Node, container?: Node): NodeWrap;
+  declare export class NodeWrap {
+    each (...args: Array<Function>): NodeWrap;
+    push (...args: Array<Node>): NodeWrap;
+    splice (start: number, count: number): NodeWrap;
+    find (selector: string): NodeWrap;
+    append (childEls: Node): NodeWrap;
+    appendTo (childEls: Node): NodeWrap;
+    text (val: string): NodeWrap;
+    html (html: string): NodeWrap;
+    attr  (name: string, val: string | number | boolean): NodeWrap;
+    data (key: string, val?: string | number | boolean | void): NodeWrap;
+    css (key: string, val?: string): NodeWrap;
+    addClass (cls: string): NodeWrap;
+    removeClass (cls: string): NodeWrap;
+    hasClass (cls: string): NodeWrap;
+    on (type: string, handler: Function, once?: boolean, capture?: boolean): NodeWrap;
+    off (type: string, handler: Function, once?: boolean, capture?: boolean): NodeWrap;
+    delegate (selector: string, type: string, handler: Function, capture: boolean): NodeWrap;
+    undelegate (selector: string, type: string, handler: Function, capture: boolean): NodeWrap;
+    remove (): NodeWrap;
+  }
