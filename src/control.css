@@ -40,7 +40,7 @@ chimee-control{
 /*播放器状态， 播放／暂停*/
 chimee-control-state .left,
 chimee-control-state .right{
-  transition: all .4s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 chimee-control-state svg{
   width: 2em;
