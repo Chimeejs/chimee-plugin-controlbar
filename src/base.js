@@ -13,13 +13,14 @@ export default class Base {
 
   destroy () {
     this.removeAllEvent();
-    this.parent.$dom.removeChild(this.$dom);
+    this.parent.$wrap.removeChild(this.$dom);
   }
 
   createEl () {
     this.$dom = document.createElement(this.option.tag);
     this.$dom.innerHTML = this.option.html || '';
-    this.parent.$dom.appendChild(this.$dom);
+    console.log(this.parent.$wrap, this.parent)
+    this.parent.$wrap.appendChild(this.$dom);
   }
 
   addAllEvent () {

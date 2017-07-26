@@ -14,15 +14,28 @@ chimee-control.small chimee-screen-small{
 
 chimee-control{
   position: absolute;
-  display: table;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
   height: 2em;
   line-height: 2em;
-  bottom: 0;
   font-size: 14px;
-  background: rgba(0, 0, 0, .5);
   user-select: none;
   font-family: Roboto,Arial,Helvetica,sans-serif;
-  transition: all .5s ease;
+  overflow: hidden;
+  transition: visibility .5s ease;
+}
+
+chimee-control-wrap{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2em;
+  display: table;
+  background: rgba(0, 0, 0, .5);
+  transition: bottom .5s ease;
 }
 
 .chimee-component{

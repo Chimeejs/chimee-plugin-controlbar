@@ -20,7 +20,6 @@ const chimeeControl = {
   init (videoConfig) {
     if(videoConfig.controls === false) return;
     this.show = true;
-    this.$css('container', 'overflow', 'hidden');
     videoConfig.controls = false;
     const _this = this;
     applyDecorators(videoConfig, {
@@ -37,15 +36,16 @@ const chimeeControl = {
     }, {self: true});
     this.live = videoConfig.type === 'live';
     this.config = isObject(this.$config) ? deepAssign(defaultConfig, this.$config) : defaultConfig;
+    this.$dom.innerHTML = '<chimee-control-wrap></chimee-control-wrap>';
+    this.$wrap = this.$dom.querySelector('chimee-control-wrap');
+    console.log(this.$wrap)
     this.children = createChild(this);
-    addEvent(this.$dom, 'click', this._click);
   },
   destroy () {
     for(const i in this.children) {
       this.children[i].destroy();
     }
     this.$dom.parentNode.removeChild(this.$dom);
-    removeEvent(this.$dom, 'click', this._click);
     window.clearTimeout(this.timeId);
   },
   inited () {
@@ -133,17 +133,21 @@ const chimeeControl = {
     _hideItself () {
       window.clearTimeout(this.timeId);
       this.timeId = setTimeout(() => {
+        setStyle(this.$wrap, {
+          bottom: '-4em'
+        });
         setStyle(this.$dom, {
-          visibility: 'hidden',
-          bottom: '-2em'
+          visibility: 'hidden'
         });
       }, 2000);
     },
     _showItself () {
       window.clearTimeout(this.timeId);
-      setStyle(this.$dom, {
-        visibility: 'visible',
+      setStyle(this.$wrap, {
         bottom: '0'
+      });
+      setStyle(this.$dom, {
+        visibility: 'visible'
       });
     },
     _display () {
@@ -156,10 +160,6 @@ const chimeeControl = {
       if(this.paused) return;
       this._showItself();
       this._hideItself();
-    },
-    _click (e) {
-      e.stopPropagation();
-      this._mousemove();
     }
   }
 };
