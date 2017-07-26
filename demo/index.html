@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>test</title>
+    <style>
+      #wrap{
+        width: 768px;
+        height: 390px;
+      }
+      container{
+        position: relative;
+      }
+      container, video{
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap"></div>
+  </body>
+  <script src="https://s4.ssl.qhres.com/static/a804c2c701d634d6.js"></script>
+  <script src="../lib/index.browser.js"></script>
+  <script>
+    Chimee.install(chimeePluginControlbar);
+    const chimee = new Chimee({
+      wrapper: '#wrap',
+      src: 'http://cdn.toxicjohann.com/lostStar.mp4',
+      plugin: [chimeePluginControlbar.name],
+      controls: true,
+      autoplay: false
+    });
+  </script>
+</html>
