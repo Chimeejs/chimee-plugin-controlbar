@@ -30,6 +30,17 @@ const defaultOption = {
   }
 };
 
+const getElementPath = function (elem) {
+  const path = [];
+  if(elem === null) return path;
+  path.push(elem);
+  while(elem.parentNode !== null) {
+    elem = elem.parentNode;
+    path.push(elem);
+  };
+  return path;
+}
+
 export default class Volume extends Base {
   constructor (parent, option) {
     super(parent);
@@ -67,9 +78,10 @@ export default class Volume extends Base {
   }
 
   click (e) {
-    if(e.path.indexOf(this.$state[0]) !== -1) {
+    const path = e.path || getElementPath(e.target);
+    if(path.indexOf(this.$state[0]) !== -1) {
       this.stateClick(e);
-    }else if(e.path.indexOf(this.$bar[0]) !== -1) {
+    }else if(path.indexOf(this.$bar[0]) !== -1) {
       this.barClick(e);
     }
   }

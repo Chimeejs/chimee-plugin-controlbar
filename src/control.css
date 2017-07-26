@@ -21,7 +21,7 @@ chimee-control{
   font-size: 14px;
   background: rgba(0, 0, 0, .5);
   user-select: none;
-  font-family: monospace;
+  font-family: Roboto,Arial,Helvetica,sans-serif;
   transition: all .5s ease;
 }
 
@@ -45,18 +45,6 @@ chimee-control-state .right{
 chimee-control-state svg{
   width: 2em;
   height: 1.4em;
-}
-chimee-control.play .left{
-  d: path('M0.921875,0.265625L0.921875,197.074852L95.7890625,149L96.2929688,49Z');
-}
-chimee-control.pause .left{
-  d: path('M0.921875,1.265625L0.921875,198.074852L79.3611677,198.074852L79.3611677,0.258923126Z');
-}
-chimee-control.play .right{
-  d: path('M90.3142151,45.9315226L90.3142151,151.774115L201.600944,99.9938782L201.600944,98.0237571Z');
-}
-chimee-control.pause .right{
-  d: path('M126.921875,1.265625L126.921875,198.074852L205.361168,198.074852L205.361168,0.258923126Z');
 }
 
 /*播放器控制条*/
