@@ -38,7 +38,6 @@ const chimeeControl = {
     this.config = isObject(this.$config) ? deepAssign(defaultConfig, this.$config) : defaultConfig;
     this.$dom.innerHTML = '<chimee-control-wrap></chimee-control-wrap>';
     this.$wrap = this.$dom.querySelector('chimee-control-wrap');
-    console.log(this.$wrap)
     this.children = createChild(this);
   },
   destroy () {
