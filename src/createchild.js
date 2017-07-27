@@ -4,6 +4,7 @@ import Volume from './volume.js';
 import ProgressBar from './progressbar.js';
 import ProgressTime from './progresstime.js';
 import Screen from './screen.js';
+import Clarity from './clarity.js';
 
 function hundleChildren (plugin) {
   let childConfig = {};
@@ -69,6 +70,11 @@ export function createChild (plugin) {
         case 'screen':
           if(childConfig.screen) {
             children.screen = new Screen(plugin, childConfig.screen);
+          }
+          break;
+        case 'clarity':
+          if(childConfig.clarity && Array.isArray(childConfig.clarity.list)) {
+            children.screen = new Clarity(plugin, childConfig.clarity);
           }
           break;
         default:

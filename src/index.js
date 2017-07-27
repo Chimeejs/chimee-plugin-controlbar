@@ -16,6 +16,7 @@ const chimeeControl = {
     children: {}
   },
   level: 99,
+  operable: false,
   create () {},
   init (videoConfig) {
     if(videoConfig.controls === false) return;
@@ -117,7 +118,7 @@ const chimeeControl = {
       }
     },
     click (e) {
-      !this.live && this.children.play && this.children.play.click(e);
+      this.children.play && this.children.play.click(e);
     },
     dblclick (e) {
       this.dblclick = true;
@@ -132,8 +133,10 @@ const chimeeControl = {
     _hideItself () {
       window.clearTimeout(this.timeId);
       this.timeId = setTimeout(() => {
+        let bottom = this.$wrap.offsetHeight;
+        bottom = this.children.progressBar ? this.children.progressBar.$wrap[0].offsetTop - bottom : -bottom;
         setStyle(this.$wrap, {
-          bottom: '-4em'
+          bottom
         });
         setStyle(this.$dom, {
           visibility: 'hidden'

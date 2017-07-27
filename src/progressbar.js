@@ -36,7 +36,21 @@ export default class ProgressBar extends Base {
     this.$tip = $('chimee-progressbar-tip', this.$dom);
     this.$track = $('chimee-progressbar-track', this.$dom);
     addClassName(this.$dom, 'chimee-component');
+    
+    // css 配置
+    // this.option.layout === 'up' && addClassName(this.$dom, 'vertical');
     !this.visiable && setStyle(this.$dom, 'visibility', 'hidden');
+    // 进度条居中布局，还是在上方
+    if(this.option.layout === 'up') {
+      const left = -this.$dom.offsetLeft;
+      this.$wrap.css({
+        left: -this.$dom.offsetLeft + 'px',
+        top: '-2em',
+        height: '2em',
+        width: this.parent.$dom.offsetWidth + 'px'
+      })
+    }
+
     this.addWrapEvent();
   }
   destroy () {
@@ -58,10 +72,8 @@ export default class ProgressBar extends Base {
   progress () {
     let buffer = 0;
     try{
-      const bufferLength = this.parent.buffered.length;
-      buffer = this.parent.buffered.end(bufferLength);
+      buffer = this.parent.buffered.end(0);
     }catch (e) {}
-
     const bufferWidth = buffer / this.parent.duration * 100 + '%';
     this.$buffer.css('width', bufferWidth);
   }
