@@ -41,7 +41,7 @@ chimee-control-wrap{
 .chimee-component{
   display: table-cell;
   height: 2em;
-  padding: .3em;
+  padding: .3em .3em .2em;
   box-sizing: border-box;
   vertical-align: top;
   cursor: pointer;

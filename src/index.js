@@ -117,7 +117,7 @@ const chimeeControl = {
       }
     },
     click (e) {
-      !this.live && this.children.play && this.children.play.click(e);
+      this.children.play && this.children.play.click(e);
     },
     dblclick (e) {
       this.dblclick = true;
