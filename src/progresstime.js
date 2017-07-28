@@ -7,7 +7,7 @@ import Base from './base.js';
 
 const defaultOption = {
   tag: 'chimee-progresstime',
-  html: `
+  defaultHtml: `
     <chimee-progresstime-pass>00:00</chimee-progresstime-pass
     ><chimee-progresstime-total
       ><span>/</span

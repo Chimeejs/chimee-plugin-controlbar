@@ -8,7 +8,7 @@ import Base from './base.js';
 
 const defaultOption = {
   tag: 'chimee-volume',
-  html: `
+  defaultHtml: `
     <chimee-volume-state>
       <svg viewBox="0 0 107 101" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g class="volume" stroke="#ffffff">
@@ -56,6 +56,14 @@ export default class Volume extends Base {
   init () {
     super.create();
     this.$state = $('chimee-volume-state', this.$dom);
+    if(this.option.icon) {
+      this.$state.html('');
+      this.$state.css({
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+        backgroundSize: `${this.option.width} ${this.option.height}`
+      })
+    }
     this.$bar = $('chimee-volume-bar', this.$dom);
     this.$all = $('chimee-volume-bar-all', this.$dom);
     this.$bg = $('chimee-volume-bar-bg', this.$dom);
@@ -75,6 +83,11 @@ export default class Volume extends Base {
     }
     removeClassName(this.$dom, 'mute low high');
     addClassName(this.$dom, this.state);
+    if(this.option.icon) {
+      this.$state.css({
+        backgroundImage: `url(${this.option.icon[this.state]})`
+      })
+    }
   }
 
   click (e) {

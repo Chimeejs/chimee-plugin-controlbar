@@ -1,4 +1,4 @@
-import {deepAssign, isObject, formatTime, addClassName, $, addEvent, removeEvent, setStyle} from 'chimee-helper';
+import {deepAssign, isObject, formatTime, addClassName, $, addEvent, removeEvent, setStyle, getStyle} from 'chimee-helper';
 import {autobind} from 'toxic-decorators';
 import Base from './base.js';
 
@@ -6,9 +6,25 @@ import Base from './base.js';
  * progressBar 配置
  */
 
+/******************  */
+let screenEvent = '';
+
+if(document.webkitCancelFullScreen) {
+  screenEvent = 'webkitfullscreenchange';
+}else if(document.mozCancelFullScreen) {
+  screenEvent = 'mozfullscreenchange';
+}else if(document.msExitFullscreen) {
+  screenEvent = 'msfullscreenchange';
+}else if(document.exitFullscreen) {
+  screenEvent = 'fullscreenchange';
+}
+/******************  */
+
+
+
 const defaultOption = {
   tag: 'chimee-progressbar',
-  html: `
+  defaultHtml: `
     <chimee-progressbar-wrap>
       <chimee-progressbar-bg></chimee-progressbar-bg>
       <chimee-progressbar-buffer></chimee-progressbar-buffer>
@@ -36,10 +52,37 @@ export default class ProgressBar extends Base {
     this.$tip = $('chimee-progressbar-tip', this.$dom);
     this.$track = $('chimee-progressbar-track', this.$dom);
     addClassName(this.$dom, 'chimee-component');
+    
+    // css 配置
+    // this.option.layout === 'up' && addClassName(this.$dom, 'vertical');
     !this.visiable && setStyle(this.$dom, 'visibility', 'hidden');
+    // 进度条居中布局，还是在上方
+    if(this.option.layout === 'up') {
+      const left = -this.$dom.offsetLeft;
+      this.$wrap.css({
+        left: -this.$dom.offsetLeft + 'px',
+        top: '-2em',
+        height: '2em',
+        width: this.parent.$dom.offsetWidth + 'px'
+      })
+      addEvent(document, screenEvent, this.screenChange);
+    }else{
+      this.$wrap.css({
+        top: '.9em',
+        height: '2.8em'
+      })
+    }
     this.addWrapEvent();
   }
+  @autobind
+  screenChange () {
+    // console.log(getStyle(this.parent.$dom, 'width'), this.parent.$dom.offsetWidth);
+    this.$wrap.css({
+      width: this.parent.$dom.offsetWidth + 'px'
+    });
+  }
   destroy () {
+    removeEvent(document, screenEvent, this.screenChange);
     this.removeWrapEvent();
     super.destroy();
   }
@@ -58,10 +101,8 @@ export default class ProgressBar extends Base {
   progress () {
     let buffer = 0;
     try{
-      const bufferLength = this.parent.buffered.length;
-      buffer = this.parent.buffered.end(bufferLength);
+      buffer = this.parent.buffered.end(0);
     }catch (e) {}
-
     const bufferWidth = buffer / this.parent.duration * 100 + '%';
     this.$buffer.css('width', bufferWidth);
   }

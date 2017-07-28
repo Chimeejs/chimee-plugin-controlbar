@@ -15,18 +15,59 @@
         height: 100%;
         background: #000;
       }
+
     </style>
   </head>
   <body>
     <div id="wrap"></div>
   </body>
-  <script src="https://s4.ssl.qhres.com/static/a804c2c701d634d6.js"></script>
+  <script src="./chimee.js"></script>
   <script src="../lib/index.browser.js"></script>
   <script>
     Chimee.install(chimeePluginControlbar);
-    const chimee = new Chimee({
+    const player = new Chimee({
       wrapper: '#wrap',
-      src: 'http://cdn.toxicjohann.com/lostStar.mp4',
+      src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4',
+      // plugin: [{
+      //   name: chimeePluginControlbar.name,
+      //   children: {
+      //     play: {
+      //       icon: {
+      //         play: './icon/play.svg',
+      //         pause: './icon/pause.svg'
+      //       },
+      //       width: '29px',
+      //       height: '29px'
+      //     },
+      //     progressTime: true,
+      //     progressBar: {
+      //       layout: 'up'
+      //     },
+      //     volume: {
+      //       icon: {
+      //         high: './icon/volume-high.svg',
+      //         low: './icon/volume-low.svg',
+      //         mute: './icon/volume-mute.svg'
+      //       },
+      //       width: '29px',
+      //       height: '26px'
+      //     },          
+      //     clarity: {
+      //       list: [
+      //         {name: '标清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_368b70a5d4f-c5cc-42ff-b442-004168fc86a3.mp4'},
+      //         {name: '高清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_369ed890f51-1c38-42a7-9ce2-828492660c60.mp4'},
+      //         {name: '超清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_370cc2f40bd-a39f-472a-884f-f44fcd9c5ae0.mp4'},
+      //         {name: '原画', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4'}
+      //       ]
+      //     },
+      //     screen: {
+      //       icon: {
+      //         small: './icon/screen-small.svg',
+      //         full: './icon/screen-full.svg'
+      //       }
+      //     }
+      //   }
+      // }],
       plugin: [chimeePluginControlbar.name],
       controls: true,
       autoplay: false
