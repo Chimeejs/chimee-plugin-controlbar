@@ -25,7 +25,7 @@ if(document.webkitCancelFullScreen) {
 
 const defaultOption = {
   tag: 'chimee-screen',
-  html: `
+  defaultHtml: `
     <chimee-screen-full></chimee-screen-full>
     <chimee-screen-small></chimee-screen-small>
   `,
@@ -44,6 +44,14 @@ export default class Screen extends Base {
 
   init () {
     super.create();
+    if(this.option.icon) {
+      this.$dom.innerHTML = '';
+      setStyle(this.$dom, {
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+        backgroundSize: `${this.option.width} ${this.option.height}`
+      })
+    }
     this.changeState(this.state);
     // addClassName(this.$dom, 'flex-item');
     addClassName(this.$dom, 'chimee-component');
@@ -55,6 +63,11 @@ export default class Screen extends Base {
     const removeState = state === 'small' ? 'full' : 'small';
     addClassName(this.parent.$dom, state);
     removeClassName(this.parent.$dom, removeState);
+    if(this.option.icon) {
+      setStyle(this.$dom, {
+        backgroundImage: `url(${this.option.icon[state]})`
+      })
+    }
   }
 
   click () {

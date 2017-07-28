@@ -12,7 +12,7 @@ function getComputedStyleNum (elem, prop) {
 const defaultOption = {
   tag: 'chimee-clarity',
   width: '2em',
-  html: `
+  defaultHtml: `
     <chimee-clarity-text></chimee-clarity-text>
     <chimee-clarity-list>
       <ul></ul>
