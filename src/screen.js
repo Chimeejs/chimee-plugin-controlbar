@@ -50,7 +50,7 @@ export default class Screen extends Base {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
         backgroundSize: `${this.option.width} ${this.option.height}`
-      })
+      });
     }
     this.changeState(this.state);
     // addClassName(this.$dom, 'flex-item');
@@ -66,7 +66,7 @@ export default class Screen extends Base {
     if(this.option.icon) {
       setStyle(this.$dom, {
         backgroundImage: `url(${this.option.icon[state]})`
-      })
+      });
     }
   }
 

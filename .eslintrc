@@ -3,21 +3,18 @@
     "process": true,
     "test": true,
     "expect": true,
-    "jest": true,
-    "describe": true
+    "describe": true,
+    "it": true
   },
   "env": {
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "jest/globals": true
+    "jasmine": true
   },
   "extends": [
-    "plugin:flowtype/recommended"
   ],
   "plugins": [
-    "flowtype",
-    "jest"
   ],
   "parser": "babel-eslint",
   "parserOptions": {

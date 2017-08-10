@@ -9,7 +9,7 @@ import Clarity from './clarity.js';
 function hundleChildren (plugin) {
   let childConfig = {};
   if(!plugin.$config.children) {
-    childConfig = plugin.live ? {
+    childConfig = plugin.isLive ? {
       play: true, // 底部播放暂停按钮
       progressTime: false, // 播放时间
       progressBar: false, // 播放进度控制条

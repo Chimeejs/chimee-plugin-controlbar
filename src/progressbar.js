@@ -1,34 +1,16 @@
-import {deepAssign, isObject, formatTime, addClassName, $, addEvent, removeEvent, setStyle, getStyle} from 'chimee-helper';
+import {deepAssign, isObject, formatTime, addClassName, $, addEvent, removeEvent, setStyle} from 'chimee-helper';
 import {autobind} from 'toxic-decorators';
 import Base from './base.js';
-
-/**
- * progressBar 配置
- */
-
-/******************  */
-let screenEvent = '';
-
-if(document.webkitCancelFullScreen) {
-  screenEvent = 'webkitfullscreenchange';
-}else if(document.mozCancelFullScreen) {
-  screenEvent = 'mozfullscreenchange';
-}else if(document.msExitFullscreen) {
-  screenEvent = 'msfullscreenchange';
-}else if(document.exitFullscreen) {
-  screenEvent = 'fullscreenchange';
-}
-/******************  */
-
-
 
 const defaultOption = {
   tag: 'chimee-progressbar',
   defaultHtml: `
     <chimee-progressbar-wrap>
-      <chimee-progressbar-bg></chimee-progressbar-bg>
-      <chimee-progressbar-buffer></chimee-progressbar-buffer>
-      <chimee-progressbar-all></chimee-progressbar-all>
+      <chimee-progressbar-bg class="chimee-progressbar-line"></chimee-progressbar-bg>
+      <chimee-progressbar-buffer class="chimee-progressbar-line"></chimee-progressbar-buffer>
+      <chimee-progressbar-all class="chimee-progressbar-line">
+        <chimee-progressbar-ball></chimee-progressbar-ball>
+      </chimee-progressbar-all>
       <chimee-progressbar-tip></chimee-progressbar-tip>
     </chimee-progressbar-wrap>
   `,
@@ -51,40 +33,44 @@ export default class ProgressBar extends Base {
     this.$all = $('chimee-progressbar-all', this.$dom);
     this.$tip = $('chimee-progressbar-tip', this.$dom);
     this.$track = $('chimee-progressbar-track', this.$dom);
+    this.$line = $('.chimee-progressbar-line', this.$dom);
+    this.$ball = $('chimee-progressbar-ball', this.$dom);
     addClassName(this.$dom, 'chimee-component');
-    
+
     // css 配置
-    // this.option.layout === 'up' && addClassName(this.$dom, 'vertical');
     !this.visiable && setStyle(this.$dom, 'visibility', 'hidden');
+    // this.$line.css({
+    //   top: this.$wrap.
+    // });
     // 进度条居中布局，还是在上方
-    if(this.option.layout === 'up') {
-      const left = -this.$dom.offsetLeft;
+    if(this.option.layout === 'two-line') {
+      addClassName(this.$dom, 'two-line');
       this.$wrap.css({
         left: -this.$dom.offsetLeft + 'px',
-        top: '-2em',
-        height: '2em',
-        width: this.parent.$dom.offsetWidth + 'px'
-      })
-      addEvent(document, screenEvent, this.screenChange);
+        // top: -this.$ball[0].offsetHeight * 2 + 'px',
+        width: this.parent.$dom.offsetWidth + 'px',
+        // height: this.$ball[0].offsetHeight * 2 + 'px'
+      });
+      // this.$line.css({
+      //   top: this.$ball[0].offsetHeight + 'px'
+      // }) 
+      setStyle(this.parent.$wrap, 'paddingTop', this.$ball[0].offsetHeight + 'px');
+      this.watch_screen = this.parent.$watch('isFullScreen', () => {
+        this.$wrap.css({
+          width: this.parent.$dom.offsetWidth + 'px'
+        });
+      });
     }else{
-      this.$wrap.css({
-        top: '.9em',
-        height: '2.8em'
-      })
+      // this.$line.css({
+      //   top: this.$wrap[0].offsetHeight / 2 + 'px'
+      // }) 
     }
     this.addWrapEvent();
   }
-  @autobind
-  screenChange () {
-    // console.log(getStyle(this.parent.$dom, 'width'), this.parent.$dom.offsetWidth);
-    this.$wrap.css({
-      width: this.parent.$dom.offsetWidth + 'px'
-    });
-  }
   destroy () {
-    removeEvent(document, screenEvent, this.screenChange);
     this.removeWrapEvent();
     super.destroy();
+    this.watch_screen();
   }
   addWrapEvent () {
     this.$wrap.on('mousedown', this.mousedown);
@@ -111,9 +97,11 @@ export default class ProgressBar extends Base {
    * requestAnimationFrame 来更新进度条, timeupdate 事件
    */
   update () {
+    const allWidth = this.$wrap[0].offsetWidth - this.$ball[0].offsetWidth;
     const time = this._currentTime !== undefined ? this._currentTime : this.parent.currentTime;
-    const timeWidth = time ? time / this.parent.duration * 100 + '%' : 0;
-    this.$all.css('width', timeWidth);
+    const timePer = time ? time / this.parent.duration : 0;
+    const timeWidth = timePer * allWidth;
+    this.$all.css('width', timeWidth + 'px');
   }
   @autobind
   mousedown (e) {
@@ -165,7 +153,9 @@ export default class ProgressBar extends Base {
     let time = e.layerX / this.$wrap[0].offsetWidth * this.parent.duration;
     time = time < 0 ? 0 : time > this.parent.duration ? this.parent.duration : time;
     const tipContent = formatTime(time);
-    const left = e.layerX - this.$tip[0].offsetWidth / 2;
+    let left = e.layerX - this.$tip[0].offsetWidth / 2;
+    const leftBound = this.$wrap[0].offsetWidth - this.$tip[0].offsetWidth;
+    left = left < 0 ? 0 : left > leftBound ? leftBound : left;
     this.$tip.text(tipContent);
     this.$tip.css('display', 'inline-block');
     this.$tip.css('left', `${left}px`);

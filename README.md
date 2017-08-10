@@ -1,13 +1,48 @@
 # chimee-plugin-controlbar
 
+## install
+
+安装
+
+```shell
+# 依赖于 chimee， 首先需要安装 chimee
+npm install chimee
+# 安装控制条组件
+npm install chimee-plugin-controlbar
+```
+
+使用
+
+```javascript
+import chimee from 'chimee';
+import chimeePluginControlbar from 'chimee-plugin-controlbar';
+
+// 安装插件
+chimee.install(chimeeControlbar);
+const player = new chimee({
+  // ...
+  // 使用插件
+  plugin: [
+    chimeePluginControlbar.name
+  ]
+});
+```
+
+**也可以在页面中引用 `/lib/index.browser.js` 然后在页面中使用 chimeePluginControlbar**
+
+## 配置
+
 ## 目前支持的小组件
 
 1. `play`: 播放控制组件
 2. `volume`: 声音控制组件
 3. `progressTime`: 时间展示组件，用来展示播放时间／开播时间／视频总时长
 4. `progressBar`: 进度条控制组件
+  * layout: 
+    * `two-line` 进度条在整个进度条的上方， 否则为同一行
 5. `screen`: 全屏切换组件
 6.  `clarity`: 切换清晰度组件，如果没有给出清晰度列表则不初始化该组件
+  * list: 清晰度列表， 包含 `src` 中的 url， 如果没有给出，则不加载这个组件
 
 ## 使用方式
 

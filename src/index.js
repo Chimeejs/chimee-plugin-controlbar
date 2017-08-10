@@ -1,5 +1,5 @@
 import {accessor, applyDecorators} from 'toxic-decorators';
-import {isObject, deepAssign, setStyle, addEvent, removeEvent} from 'chimee-helper';
+import {isObject, deepAssign, setStyle} from 'chimee-helper';
 import './control.css';
 import {createChild} from './createchild.js';
 
@@ -17,6 +17,7 @@ const chimeeControl = {
   },
   level: 99,
   operable: false,
+  penetrate: false,
   create () {},
   init (videoConfig) {
     if(videoConfig.controls === false) return;
@@ -35,7 +36,6 @@ const chimeeControl = {
         }
       }, {preSet: true})
     }, {self: true});
-    this.live = videoConfig.type === 'live';
     this.config = isObject(this.$config) ? deepAssign(defaultConfig, this.$config) : defaultConfig;
     this.$dom.innerHTML = '<chimee-control-wrap></chimee-control-wrap>';
     this.$wrap = this.$dom.querySelector('chimee-control-wrap');
@@ -153,7 +153,7 @@ const chimeeControl = {
       });
     },
     _display () {
-      const display = this.show ? 'table' : 'none';
+      const display = this.show ? 'block' : 'none';
       setStyle(this.$dom, {
         display
       });

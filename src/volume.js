@@ -13,8 +13,8 @@ const defaultOption = {
       <svg viewBox="0 0 107 101" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g class="volume" stroke="#ffffff">
           <polygon class="horn" fill="#ffffff" points="0.403399942 30 27.3842118 30 56.8220589 2.84217094e-14 57.9139815 100 27.3842118 70 0.403399942 70"></polygon>
-          <path class="ring1" d="M63,5.00975239 C69.037659,4.78612057 75.9178585,8.40856146 83.6405984,15.877075 C95.2247083,27.0798454 100,34.7975125 100,50.9608558 C100,67.1241991 95.3628694,73.7907482 83.6405984,83.8306724 C75.8257511,90.5239552 68.9455516,94.0320644 63,94.355" stroke-width="10"></path>
-          <path class="ring2" d="M65.2173913,29.4929195 C67.8779343,29.3931169 70.9097496,31.0097416 74.3128371,34.3427934 C79.4174684,39.3423712 81.5217391,42.7866154 81.5217391,50 C81.5217391,57.2133846 79.4783502,60.1885354 74.3128371,64.6691576 C70.8691617,67.656239 67.8373465,69.2218397 65.2173913,69.3659595" stroke-width="10"></path>
+          <path class="ring1" d="M63,5.00975239 C69.037659,4.78612057 75.9178585,8.40856146 83.6405984,15.877075 C95.2247083,27.0798454 100,34.7975125 100,50.9608558 C100,67.1241991 95.3628694,73.7907482 83.6405984,83.8306724 C75.8257511,90.5239552 68.9455516,94.0320644 63,94.355" fill-opacity="0" stroke-width="10"></path>
+          <path class="ring2" d="M65.2173913,29.4929195 C67.8779343,29.3931169 70.9097496,31.0097416 74.3128371,34.3427934 C79.4174684,39.3423712 81.5217391,42.7866154 81.5217391,50 C81.5217391,57.2133846 79.4783502,60.1885354 74.3128371,64.6691576 C70.8691617,67.656239 67.8373465,69.2218397 65.2173913,69.3659595" fill-opacity="0" stroke-width="10"></path>
           <path class="line" d="M4.19119202,3.65220497 L102,96" stroke-width="10"></path>
         </g>
     </svg>
@@ -39,7 +39,7 @@ const getElementPath = function (elem) {
     path.push(elem);
   };
   return path;
-}
+};
 
 export default class Volume extends Base {
   constructor (parent, option) {
@@ -62,7 +62,7 @@ export default class Volume extends Base {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
         backgroundSize: `${this.option.width} ${this.option.height}`
-      })
+      });
     }
     this.$bar = $('chimee-volume-bar', this.$dom);
     this.$all = $('chimee-volume-bar-all', this.$dom);
@@ -86,7 +86,7 @@ export default class Volume extends Base {
     if(this.option.icon) {
       this.$state.css({
         backgroundImage: `url(${this.option.icon[this.state]})`
-      })
+      });
     }
   }
 

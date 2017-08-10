@@ -16,13 +16,13 @@ const defaultOption = {
     <chimee-clarity-text></chimee-clarity-text>
     <chimee-clarity-list>
       <ul></ul>
-      <i class="chimee-clarity-list-arrow">
+      <div class="chimee-clarity-list-arrow">
         <svg viewBox="0 0 115 6"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="Group-3-Copy" fill="#57B0F6">
             <polygon id="Path-2" points="0.0205224145 0.0374249581 0.0205224145 2.12677903 53.9230712 2.12677903 57.1127727 5.3468462 60.2283558 2.12677903 113.820935 2.12677903 113.820935 0.0374249581"></polygon>
           </g>
         </svg>
-      </i>
+      </div>
     </chimee-clarity-list>
   `,
   defaultEvent: {
@@ -59,7 +59,7 @@ export default class Clarity extends Base {
     const ulPaddingBottom = getComputedStyleNum(this.$listUl[0], 'paddingBottom');
     // css
     this.$list.css({
-      top:  listFontSize/2 - listPaddingBottom - ulPaddingTop - ulPaddingBottom - this.option.list.length * lineHeight + 'px'
+      top: listFontSize / 2 - listPaddingBottom - ulPaddingTop - ulPaddingBottom - this.option.list.length * lineHeight + 'px'
     });
   }
 
@@ -73,7 +73,7 @@ export default class Clarity extends Base {
         li.addClass('active');
       }
       this.$listUl.append(li);
-    })
+    });
   }
 
   mouseenter (e) {
@@ -89,15 +89,32 @@ export default class Clarity extends Base {
     if(elem.tagName === 'LI') {
       Array.from(elem.parentElement.children).map(item => {
         removeClassName(item, 'active');
-      })
+      });
       const url = elem.getAttribute('data-url') || '';
-      const currentTime = this.parent.currentTime;
       addClassName(e.target, 'active');
       this.$text.text(e.target.textContent);
-      this.parent.load(url).then(() => {
-        this.parent.currentTime = currentTime;
-      });
+      this.switchClarity(url);
     }
+  }
+
+  switchClarity (url) {
+    if (this.loadOption) {
+      this.loadOption.abort = true;
+    }
+    this.loadOption = {
+      abort: false,
+      repeatTimes: 3,
+      increment: 1,
+      immediate: true
+    };
+    const currentTime = this.parent.currentTime;
+    this.parent.$silentLoad(url, this.loadOption).then(() => {
+      this.parent.currentTime = currentTime;
+      this.loadOption = undefined;
+    }).catch((e) => {
+
+    });
+    this.mouseleave();
   }
 
 }

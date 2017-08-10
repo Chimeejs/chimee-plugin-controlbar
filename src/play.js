@@ -35,7 +35,7 @@ export default class Play extends Base {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
         backgroundSize: `${this.option.width} ${this.option.height}`
-      })
+      });
     }
     addClassName(this.$dom, 'chimee-component');
     this.$left = $(this.$dom).find('.left');
@@ -50,11 +50,10 @@ export default class Play extends Base {
     this.state = state;
     addClassName(this.parent.$dom, nextState);
     removeClassName(this.parent.$dom, state);
-    
     if(this.option.icon) {
       setStyle(this.$dom, {
         backgroundImage: `url(${this.option.icon[nextState]})`
-      })
+      });
     }else{
       this.setPath(nextState);
     }
@@ -77,6 +76,6 @@ export default class Play extends Base {
         this.$left.attr('d', 'M0.921875,1.265625L0.921875,198.074852L79.3611677,198.074852L79.3611677,0.258923126Z');
         this.$right.attr('d', 'M126.921875,1.265625L126.921875,198.074852L205.361168,198.074852L205.361168,0.258923126Z');
       }
-    }, 140)
+    }, 140);
   }
 }
