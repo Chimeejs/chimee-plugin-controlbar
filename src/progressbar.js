@@ -55,22 +55,22 @@ export default class ProgressBar extends Base {
       //   top: this.$ball[0].offsetHeight + 'px'
       // }) 
       setStyle(this.parent.$wrap, 'paddingTop', this.$ball[0].offsetHeight + 'px');
-      this.watch_screen = this.parent.$watch('isFullScreen', () => {
-        this.$wrap.css({
-          width: this.parent.$dom.offsetWidth + 'px'
-        });
-      });
     }else{
       // this.$line.css({
       //   top: this.$wrap[0].offsetHeight / 2 + 'px'
       // }) 
     }
+    this.watch_screen = this.parent.$watch('isFullScreen', () => {
+      this.$wrap.css({
+        width: this.parent.$dom.offsetWidth + 'px'
+      });
+    });
     this.addWrapEvent();
   }
   destroy () {
     this.removeWrapEvent();
-    super.destroy();
     this.watch_screen();
+    super.destroy();
   }
   addWrapEvent () {
     this.$wrap.on('mousedown', this.mousedown);

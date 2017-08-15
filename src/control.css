@@ -59,7 +59,7 @@ chimee-control-state.chimee-component{
 }
 chimee-control-state .left,
 chimee-control-state .right{
-  transition: all .2s ease-in-out;
+  transition: d .2s ease-in-out;
 }
 chimee-control-state svg{
   width: 2em;
@@ -150,12 +150,13 @@ chimee-progresstime-total{
 chimee-volume.chimee-component{
   cursor: pointer;
   padding: 0;
-  line-height: 2em;
+  width: 7em;
 }
 
 chimee-volume-state{
-  width: 3em;
-  vertical-align: 6px;
+  display: inline-block;
+  width: 2em;
+  vertical-align: 4px
 }
 chimee-volume-state svg{
   width: 2em;
@@ -196,7 +197,7 @@ chimee-volume-bar{
 chimee-volume-bar-all,
 chimee-volume-bar-bg{
   position: absolute;
-  top: 1.2em;
+  top: 1em;
   left: 0;
   display: inline-block;
   height: 3px;
@@ -243,6 +244,7 @@ chimee-screen-full{
 chimee-clarity.chimee-component{
   position: relative;
   color: #fff;
+  height: 1.75em;
   padding: 0;
   padding-right: 1em;
   padding-left: 1em;

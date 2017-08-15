@@ -136,7 +136,7 @@ const chimeeControl = {
         let bottom = this.$wrap.offsetHeight;
         bottom = this.children.progressBar ? this.children.progressBar.$wrap[0].offsetTop - bottom : -bottom;
         setStyle(this.$wrap, {
-          bottom
+          bottom: bottom + 'px'
         });
         setStyle(this.$dom, {
           visibility: 'hidden'
