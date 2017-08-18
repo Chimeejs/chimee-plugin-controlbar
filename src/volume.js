@@ -21,7 +21,9 @@ const defaultOption = {
     </chimee-volume-state>
     <chimee-volume-bar>
       <chimee-volume-bar-bg></chimee-volume-bar-bg>
-      <chimee-volume-bar-all></chimee-volume-bar-all>
+      <chimee-volume-bar-all>
+        <chimee-volume-bar-ball></chimee-volume-bar-ball>    
+      </chimee-volume-bar-all>
       <chimee-volume-bar-track></chimee-volume-bar-track>
     </chimee-volume-bar>
   `,
@@ -67,6 +69,7 @@ export default class Volume extends Base {
     this.$bar = $('chimee-volume-bar', this.$dom);
     this.$all = $('chimee-volume-bar-all', this.$dom);
     this.$bg = $('chimee-volume-bar-bg', this.$dom);
+    this.$ball = $('chimee-volume-bar-ball', this.$dom);
     addClassName(this.$dom, 'chimee-component');
     this.changeState();
     // 用户自定义配置
@@ -107,12 +110,17 @@ export default class Volume extends Base {
   }
 
   barClick (e) {
+    if(this.inBall) return;
     const volume = e.layerX / this.$bg[0].offsetWidth;
     this.parent.volume = volume < 0 ? 0 : volume > 1 ? 1 : volume;
     this.update();
   }
 
   mousedown (e) {
+    const ballRect = this.$ball[0].getClientRects()[0];
+    const ballLeft = ballRect.left;
+    const ballRight = ballRect.left + ballRect.width;
+    this.inBall = e.clientX <= ballRight && e.clientX >= ballLeft;
     this.click(e);
     this.startX = e.clientX;
     this.startVolume = this.parent.volume;

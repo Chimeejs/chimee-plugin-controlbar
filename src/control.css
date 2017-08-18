@@ -1,3 +1,12 @@
+container{
+  position: relative;
+}
+container, video{
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
 /* 默认隐藏 */
 chimee-progressbar-tip,
 chimee-screen-full,
@@ -63,7 +72,7 @@ chimee-control-state .right{
 }
 chimee-control-state svg{
   width: 2em;
-  height: 1.4em;
+  height: 1.5em;
 }
 
 /*播放器控制条*/
@@ -160,7 +169,7 @@ chimee-volume-state{
 }
 chimee-volume-state svg{
   width: 2em;
-  height: 1.4em;
+  height: 1.5em;
 }
 
 chimee-volume .ring1,
@@ -209,7 +218,7 @@ chimee-volume-bar-bg{
 chimee-volume-bar-all{
 	background: #de698c;
 }
-chimee-volume-bar-all:after{
+chimee-volume-bar-ball{
 	content: '';
 	position: absolute;
 	right: -.2em;

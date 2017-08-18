@@ -53,23 +53,19 @@ export default class ProgressBar extends Base {
       });
       // this.$line.css({
       //   top: this.$ball[0].offsetHeight + 'px'
-      // }) 
+      // })
       setStyle(this.parent.$wrap, 'paddingTop', this.$ball[0].offsetHeight + 'px');
-    }else{
-      // this.$line.css({
-      //   top: this.$wrap[0].offsetHeight / 2 + 'px'
-      // }) 
-    }
-    this.watch_screen = this.parent.$watch('isFullScreen', () => {
-      this.$wrap.css({
-        width: this.parent.$dom.offsetWidth + 'px'
+      this.watch_screen = this.parent.$watch('isFullScreen', () => {
+        this.$wrap.css({
+          width: this.parent.$dom.offsetWidth + 'px'
+        });
       });
-    });
+    }
     this.addWrapEvent();
   }
   destroy () {
     this.removeWrapEvent();
-    this.watch_screen();
+    this.watch_screen && this.watch_screen();
     super.destroy();
   }
   addWrapEvent () {
@@ -97,19 +93,23 @@ export default class ProgressBar extends Base {
    * requestAnimationFrame 来更新进度条, timeupdate 事件
    */
   update () {
-    const allWidth = this.$wrap[0].offsetWidth - this.$ball[0].offsetWidth;
+    // const allWidth = this.$wrap[0].offsetWidth - this.$ball[0].offsetWidth;
     const time = this._currentTime !== undefined ? this._currentTime : this.parent.currentTime;
     const timePer = time ? time / this.parent.duration : 0;
-    const timeWidth = timePer * allWidth;
-    this.$all.css('width', timeWidth + 'px');
+    // const timeWidth = timePer * allWidth;
+    this.$all.css('width', timePer * 100 + '%');
   }
   @autobind
   mousedown (e) {
+    const ballRect = this.$ball[0].getClientRects()[0];
+    const ballLeft = ballRect.left;
+    const ballRight = ballRect.left + ballRect.width;
+    this.inBall = e.clientX <= ballRight && e.clientX >= ballLeft;
     if(e.target === this.$tip[0]) return;
-    this._currentTime = this.parent.currentTime = e.layerX / this.$wrap[0].offsetWidth * this.parent.duration;
-    this.update();
+    this._currentTime = e.layerX / this.$wrap[0].offsetWidth * this.parent.duration;
+    if(!this.inBall) this.update();
     this.startX = e.clientX;
-    this.startTime = this.parent.currentTime;
+    this.startTime = this._currentTime;
     addEvent(window, 'mousemove', this.draging);
     addEvent(window, 'mouseup', this.dragEnd);
     addEvent(window, 'contextmenu', this.dragEnd);
@@ -135,7 +135,10 @@ export default class ProgressBar extends Base {
   dragEnd () {
     this.startX = 0;
     this.startTime = 0;
-    this.parent.currentTime = this._currentTime;
+    if(!this.inBall) {
+      this.parent.currentTime = this._currentTime;
+      this.inBall = false;
+    }
     this._currentTime = undefined;
     removeEvent(window, 'mousemove', this.draging);
     removeEvent(window, 'mouseup', this.dragEnd);
