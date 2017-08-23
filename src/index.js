@@ -54,6 +54,12 @@ const chimeeControl = {
     }
   },
   events: {
+    loadstart () {
+      this._disable(true);
+    },
+    canplay () {
+      this._disable(false);
+    },
     play () {
       this.children.play && this.children.play.changeState('play');
       this._hideItself();
@@ -80,6 +86,7 @@ const chimeeControl = {
       this.children.volume && this.children.volume.update();
     },
     keydown (e) {
+      if(this.disabled) return;
       e.stopPropagation();
       switch (e.keyCode) {
         case 32: {
@@ -118,11 +125,11 @@ const chimeeControl = {
       }
     },
     click (e) {
-      this.children.play && this.children.play.click(e);
+      !this.disabled && this.children.play && this.children.play.click(e);
     },
     dblclick (e) {
-      this.dblclick = true;
-      this.children.screen && this.children.screen.click();
+      // this.dblclick = true;
+      !this.disabled && this.children.screen && this.children.screen.click();
     }
   },
   methods: {
@@ -162,6 +169,12 @@ const chimeeControl = {
       if(this.paused) return;
       this._showItself();
       this._hideItself();
+    },
+    // controlbar 不可以点
+    // 键盘／鼠标事件不监听
+    _disable (disabled) {
+      this.disabled = disabled;
+      setStyle(this.$wrap, 'pointerEvents', disabled ? 'none' : 'auto');
     }
   }
 };
