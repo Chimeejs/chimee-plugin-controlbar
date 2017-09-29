@@ -16,6 +16,8 @@ import uglify from 'rollup-plugin-uglify';
 import nested from 'postcss-nested';
 import cssnano from 'cssnano';
 import base64 from 'postcss-base64';
+import postcssReporter from 'postcss-reporter';
+import stylelint from 'stylelint';
 
 const babelConfig = {
   cjs: {
@@ -82,6 +84,8 @@ export default function (modeConf) {
             extensions: ['.svg'],
             root: './src/'
           }),
+          stylelint(),
+          postcssReporter(),
           nested(),
           cssnano()
         ],

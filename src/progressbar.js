@@ -106,7 +106,7 @@ export default class ProgressBar extends Base {
     const ballRight = ballRect.left + ballRect.width;
     this.inBall = e.clientX <= ballRight && e.clientX >= ballLeft;
     if(e.target === this.$tip[0]) return;
-    this._currentTime = e.layerX / this.$wrap[0].offsetWidth * this.parent.duration;
+    this._currentTime = e.offsetX / this.$wrap[0].offsetWidth * this.parent.duration;
     if(!this.inBall) this.update();
     this.startX = e.clientX;
     this.startTime = this._currentTime;
@@ -153,10 +153,10 @@ export default class ProgressBar extends Base {
   @autobind
   tipShow (e) {
     if(e.target === this.$tip[0]) return;
-    let time = e.layerX / this.$wrap[0].offsetWidth * this.parent.duration;
+    let time = e.offsetX / this.$wrap[0].offsetWidth * this.parent.duration;
     time = time < 0 ? 0 : time > this.parent.duration ? this.parent.duration : time;
     const tipContent = formatTime(time);
-    let left = e.layerX - this.$tip[0].offsetWidth / 2;
+    let left = e.offsetX - this.$tip[0].offsetWidth / 2;
     const leftBound = this.$wrap[0].offsetWidth - this.$tip[0].offsetWidth;
     left = left < 0 ? 0 : left > leftBound ? leftBound : left;
     this.$tip.text(tipContent);

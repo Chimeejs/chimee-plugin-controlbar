@@ -70,6 +70,9 @@ const chimeeControl = {
     },
     load () {
     },
+    c_touchmove () {
+      this._mousemove();
+    },
     c_mousemove () {
       this._mousemove();
     },
@@ -123,6 +126,9 @@ const chimeeControl = {
           break;
         }
       }
+    },
+    touchstart (e) {
+      !this.disabled && this.children.play && this.children.play.click(e);
     },
     click (e) {
       !this.disabled && this.children.play && this.children.play.click(e);

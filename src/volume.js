@@ -111,7 +111,7 @@ export default class Volume extends Base {
 
   barClick (e) {
     if(this.inBall) return;
-    const volume = e.layerX / this.$bg[0].offsetWidth;
+    const volume = e.offsetX / this.$bg[0].offsetWidth;
     this.parent.volume = volume < 0 ? 0 : volume > 1 ? 1 : volume;
     this.update();
   }

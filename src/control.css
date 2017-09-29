@@ -1,62 +1,66 @@
-container{
+container {
   position: relative;
 }
-container, video{
+
+container,
+video {
   display: block;
   width: 100%;
   height: 100%;
   background: #000;
   outline: none;
 }
-video:focus{
+
+video:focus {
   outline: none;
 }
+
 /* 默认隐藏 */
 chimee-progressbar-tip,
 chimee-screen-full,
 chimee-clarity-list,
-chimee-screen-small{
+chimee-screen-small {
   display: none;
 }
 
 chimee-control.full chimee-screen-full,
-chimee-control.small chimee-screen-small{
+chimee-control.small chimee-screen-small {
   display: inline-block;
   width: 2em;
   height: 100%;
 }
 
-chimee-control{
+chimee-control {
   position: absolute;
   bottom: 0;
   left: 0;
   display: block;
   width: 100%;
-  height: 100%;;
+  height: 100%;
   line-height: 2em;
   font-size: 14px;
   user-select: none;
   overflow: hidden;
-  font-family: Roboto,Arial,Helvetica,sans-serif;
-  transition: visibility .5s ease;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  transition: visibility 0.5s ease;
 }
 
-chimee-control-wrap{
+chimee-control-wrap {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2em;
   display: table;
-  background: rgba(0, 0, 0, .5);
-  transition: bottom .5s ease;
+  background: rgba(0, 0, 0, 0.5);
+  transition: bottom 0.5s ease;
   pointer-events: auto;
 }
 
-.chimee-component{
+.chimee-component {
   display: table-cell;
   height: 2em;
-  padding: .3em .3em .2em;
+  padding: 0.3em 0.3em 0.2em;
   box-sizing: border-box;
   vertical-align: top;
   cursor: pointer;
@@ -65,30 +69,34 @@ chimee-control-wrap{
   white-space: nowrap;
 }
 
-/*播放器状态，播放／暂停*/
-chimee-control-state.chimee-component{
+/* 播放器状态，播放／暂停 */
+chimee-control-state.chimee-component {
   width: 3em;
   text-align: right;
 }
+
 chimee-control-state .left,
-chimee-control-state .right{
-  transition: d .2s ease-in-out;
+chimee-control-state .right {
+  transition: d 0.2s ease-in-out;
 }
-chimee-control-state svg{
+
+chimee-control-state svg {
   width: 2em;
   height: 1.5em;
 }
 
-/*播放器控制条*/
-chimee-progressbar.chimee-component{
+/* 播放器控制条 */
+chimee-progressbar.chimee-component {
   width: auto;
   position: relative;
 }
-chimee-progressbar.two-line chimee-progressbar-wrap{
+
+chimee-progressbar.two-line chimee-progressbar-wrap {
   top: -1.6em;
   height: 1.6em;
 }
-chimee-progressbar-wrap{
+
+chimee-progressbar-wrap {
   display: inline-block;
   height: 100%;
   position: absolute;
@@ -96,47 +104,54 @@ chimee-progressbar-wrap{
   right: 1em;
   top: 0;
 }
-chimee-progressbar.two-line .chimee-progressbar-line{
-  top: .8em;
+
+chimee-progressbar.two-line .chimee-progressbar-line {
+  top: 0.8em;
 }
-.chimee-progressbar-line{
+
+.chimee-progressbar-line {
   position: absolute;
-  top: .9em;
+  top: 0.9em;
   left: 0;
   display: inline-block;
   height: 3px;
 }
-chimee-progressbar-bg{
+
+chimee-progressbar-bg {
   width: 100%;
   background: #4c4c4c;
 }
-chimee-progressbar-buffer{
+
+chimee-progressbar-buffer {
   width: 0;
   background: #6f6f6f;
 }
-chimee-progressbar-all{
-	background: #de698c;
+
+chimee-progressbar-all {
+  background: #de698c;
 }
-chimee-progressbar-ball{
-	content: '';
+
+chimee-progressbar-ball {
+  content: '';
   position: absolute;
-  right: -.8em;
-	top: -.3em;
-	display: inline-block;
-	width: .8em;
-	height: .8em;
-	border-radius: .8em;
+  right: -0.8em;
+  top: -0.3em;
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 0.8em;
   background: #fff;
   pointer-events: none;
 }
-chimee-progressbar-tip{
-	position: absolute;
-	bottom: .5em;
+
+chimee-progressbar-tip {
+  position: absolute;
+  bottom: 0.5em;
   top: -1.5em;
-	left: 0;
-	z-index: 10;
-  padding: 0 .5em;
-	height: 1.5em;
+  left: 0;
+  z-index: 10;
+  padding: 0 0.5em;
+  height: 1.5em;
   background: #fff;
   line-height: 1.5em;
   border-radius: 4px;
@@ -144,109 +159,114 @@ chimee-progressbar-tip{
   text-align: center;
 }
 
-/*时间显示*/
-chimee-progresstime.chimee-component{
+/* 时间显示 */
+chimee-progresstime.chimee-component {
   color: #fff;
   font-weight: normal;
   text-align: center;
   white-space: nowrap;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 chimee-progresstime-pass,
-chimee-progresstime-total{
+chimee-progresstime-total {
   display: inline;
 }
 
-/*音量控制*/
+/* 音量控制 */
 
-chimee-volume.chimee-component{
+chimee-volume.chimee-component {
   cursor: pointer;
   padding: 0;
   width: 7em;
 }
 
-chimee-volume-state{
+chimee-volume-state {
   display: inline-block;
   width: 2em;
-  vertical-align: 4px
+  vertical-align: 4px;
 }
-chimee-volume-state svg{
+
+chimee-volume-state svg {
   width: 2em;
   height: 1.5em;
 }
 
 chimee-volume .ring1,
 chimee-volume .ring2,
-chimee-volume .line{
+chimee-volume .line {
   stroke-dasharray: 150;
   stroke-dashoffset: 150;
-  transition: stroke-dashoffset .7s ease-in-out;
+  transition: stroke-dashoffset 0.7s ease-in-out;
 }
 
 chimee-volume.mute .line,
 chimee-volume.mute .ring1,
-chimee-volume.mute .ring2{
+chimee-volume.mute .ring2 {
   stroke-dashoffset: 0;
 }
 
 chimee-volume.high .ring1,
-chimee-volume.high .ring2{
+chimee-volume.high .ring2 {
   stroke-dashoffset: 0;
 }
 
-chimee-volume.low .ring2{
+chimee-volume.low .ring2 {
   stroke-dashoffset: 0;
 }
 
-chimee-volume-bar{
+chimee-volume-bar {
   position: relative;
   display: inline-block;
   width: 4em;
   height: 100%;
-  margin: 0 .5em;
+  margin: 0 0.5em;
 }
 
 chimee-volume-bar-all,
-chimee-volume-bar-bg{
+chimee-volume-bar-bg {
   position: absolute;
   top: 1em;
   left: 0;
   display: inline-block;
   height: 3px;
 }
-chimee-volume-bar-bg{
+
+chimee-volume-bar-bg {
   width: 100%;
   background: #4c4c4c;
 }
-chimee-volume-bar-all{
-	background: #de698c;
-}
-chimee-volume-bar-ball{
-	content: '';
-	position: absolute;
-	right: -.2em;
-	top: -.3em;
-	display: inline-block;
-	width: .8em;
-	height: .8em;
-	border-radius: .8em;
-	background: #fff;
+
+chimee-volume-bar-all {
+  background: #de698c;
 }
 
-/*全屏*/
-chimee-screen.chimee-component{
+chimee-volume-bar-ball {
+  content: '';
+  position: absolute;
+  right: -0.2em;
+  top: -0.3em;
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 0.8em;
+  background: #fff;
+}
+
+/* 全屏 */
+chimee-screen.chimee-component {
   width: 3em;
   text-align: left;
 }
-chimee-screen-small{
+
+chimee-screen-small {
   background: url(./image/enlarge.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
 }
 
-chimee-screen-full{
+chimee-screen-full {
   background: url(./image/shrink.svg);
   background-repeat: no-repeat;
   background-size: contain;
@@ -254,7 +274,7 @@ chimee-screen-full{
 }
 
 /* 清晰度切换 */
-chimee-clarity.chimee-component{
+chimee-clarity.chimee-component {
   position: relative;
   color: #fff;
   height: 1.75em;
@@ -266,25 +286,28 @@ chimee-clarity.chimee-component{
   font-size: 16px;
 }
 
-chimee-clarity-list{
+chimee-clarity-list {
   position: absolute;
   left: -1em;
   width: 6em;
   padding-bottom: 1.5em;
-  opacity: .8;
+  opacity: 0.8;
   box-sizing: content-box;
   line-height: 0;
 }
-chimee-clarity-list ul{
+
+chimee-clarity-list ul {
   margin: 0;
   padding: 1em 0;
   background: #292929;
   line-height: 2em;
 }
-chimee-clarity-list li{
+
+chimee-clarity-list li {
   list-style-type: none;
 }
+
 chimee-clarity-list li:hover,
-chimee-clarity-list li.active{
-  color: #57B0F6;
+chimee-clarity-list li.active {
+  color: #57b0f6;
 }

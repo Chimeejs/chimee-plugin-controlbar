@@ -1,6 +1,6 @@
 {
   "name": "chimee-plugin-controlbar",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "controlbar for chimee",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
@@ -66,6 +66,7 @@
     "karma-webpack": "^2.0.4",
     "postcss-base64": "^0.7.1",
     "postcss-nested": "^2.0.2",
+    "postcss-reporter": "^5.0.0",
     "rollup": "^0.45.1",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-buble": "^0.15.0",
@@ -74,6 +75,8 @@
     "rollup-plugin-postcss": "^0.5.3",
     "rollup-plugin-uglify": "^2.0.1",
     "style-loader": "^0.18.2",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0",
     "toxic-decorators": "^0.3.6",
     "url-loader": "^0.5.9",
     "webpack": "^3.4.1"
