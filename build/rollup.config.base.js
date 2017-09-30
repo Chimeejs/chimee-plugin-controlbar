@@ -13,9 +13,8 @@ import postcss from 'rollup-plugin-postcss';
 import uglify from 'rollup-plugin-uglify';
 
 // PostCSS plugins
-import nested from 'postcss-nested';
-import cssnano from 'cssnano';
-import base64 from 'postcss-base64';
+import cssnano from 'postcss';
+import cssnext from 'postcss-cssnext';
 import postcssReporter from 'postcss-reporter';
 import stylelint from 'stylelint';
 
@@ -80,13 +79,9 @@ export default function (modeConf) {
     plugins: [
       postcss({
         plugins: [
-          base64({
-            extensions: ['.svg'],
-            root: './src/'
-          }),
           stylelint(),
           postcssReporter(),
-          nested(),
+          cssnext(),
           cssnano()
         ],
         extensions: ['.css']

@@ -1,4 +1,4 @@
-import {addClassName, setStyle} from 'chimee-helper';
+import {$} from 'chimee-helper';
 import Base from './base.js';
 
 /**
@@ -14,9 +14,7 @@ export default class Component extends Base {
 
   init () {
     super.create();
-    addClassName(this.$dom, 'chimee-component');
-    // 用户自定义配置
-    const width = this.option.width || '2em';
-    setStyle(this.$dom, 'width', width);
+    this.$dom = $(this.$dom);
+    $.addClass(this.$dom, 'chimee-flex-component');
   }
 }

@@ -3,9 +3,24 @@ import {isObject, deepAssign, setStyle} from 'chimee-helper';
 import './control.css';
 import {createChild} from './createchild.js';
 
+const majorColorStyle = `
+  .chimee-component svg g{
+    fill: majorColor;
+    stroke: majorColor;
+  }
+`;
+
+const hoverColorStyle = `
+  .chimee-component svg:hover g{
+    fill: hoverColor;
+    stroke: hoverColor;
+  }
+`;
+
 /**
  * 插件默认配置
  */
+
 const defaultConfig = {
 };
 
@@ -40,6 +55,7 @@ const chimeeControl = {
     this.$dom.innerHTML = '<chimee-control-wrap></chimee-control-wrap>';
     this.$wrap = this.$dom.querySelector('chimee-control-wrap');
     this.children = createChild(this);
+    this._setStyle();
   },
   destroy () {
     for(const i in this.children) {
@@ -181,6 +197,14 @@ const chimeeControl = {
     _disable (disabled) {
       this.disabled = disabled;
       setStyle(this.$wrap, 'pointerEvents', disabled ? 'none' : 'auto');
+    },
+    _setStyle () {
+      let css = '';
+      css += this.config.majorColor ? majorColorStyle.replace(/majorColor/g, this.config.majorColor) : '';
+      css += this.config.hoverColor ? hoverColorStyle.replace(/hoverColor/g, this.config.hoverColor) : '';
+      const style = document.createElement('style');
+      style.innerText = css;
+      document.head.appendChild(style);
     }
   }
 };

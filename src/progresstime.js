@@ -1,4 +1,4 @@
-import {deepAssign, isObject, formatTime, addClassName, $} from 'chimee-helper';
+import {deepAssign, isObject, formatTime, $} from 'chimee-helper';
 import Base from './base.js';
 
 /**
@@ -7,14 +7,13 @@ import Base from './base.js';
 
 const defaultOption = {
   tag: 'chimee-progresstime',
-  defaultHtml: `
+  html: `
     <chimee-progresstime-pass>00:00</chimee-progresstime-pass
     ><chimee-progresstime-total
       ><span>/</span
       ><chimee-progresstime-total-value>00:00</chimee-progresstime-total-value>
     </chimee-progresstime-total>
-  `,
-  defaultEvent: {}
+  `
 };
 
 export default class ProgressTime extends Base {
@@ -26,12 +25,10 @@ export default class ProgressTime extends Base {
 
   init () {
     super.create();
-    this.$total = $('chimee-progresstime-total-value', this.$dom);
-    this.$pass = $('chimee-progresstime-pass', this.$dom);
-    addClassName(this.$dom, 'chimee-component');
-
-    // 用户自定义配置
-    // this.option.width && setStyle(this.$dom, 'width', this.option.width);
+    this.$dom = $(this.$dom);
+    this.$total = this.$dom.find('chimee-progresstime-total-value');
+    this.$pass = this.$dom.find('chimee-progresstime-pass');
+    this.$dom.addClass('chimee-flex-component');
   }
 
   updatePass () {

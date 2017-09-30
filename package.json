@@ -36,6 +36,8 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "chimee-helper": "^0.1.10",
+    "file-loader": "^0.11.2",
+    "postcss-cssnext": "^3.0.2",
     "toxic-decorators": "^0.3.3"
   },
   "devDependencies": {

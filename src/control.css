@@ -1,3 +1,4 @@
+/* 暂时存放到这的， 用来设置 container video 的基本样式 */
 container {
   position: relative;
 }
@@ -15,7 +16,29 @@ video:focus {
   outline: none;
 }
 
+/* 用到的变量 */
+:root {
+  --barColor: #de698c;
+  --trackColor: #4c4c4c;
+}
+
+/* 全局默认样式 */
+.chimee-flex-component svg g {
+  fill: #fff;
+  stroke: #fff;
+}
+
+.chimee-flex-component svg:hover g {
+  fill: #fff;
+  stroke: #fff;
+}
+
 /* 默认隐藏 */
+chimee-volume-state-mute,
+chimee-volume-state-low,
+chimee-volume-state-high,
+chimee-control-state-pause,
+chimee-control-state-play,
 chimee-progressbar-tip,
 chimee-screen-full,
 chimee-clarity-list,
@@ -23,13 +46,22 @@ chimee-screen-small {
   display: none;
 }
 
+/* 满足条件时显示 */
+chimee-control.full chimee-screen-full,
+chimee-control.small chimee-screen-small,
+chimee-volume.mute chimee-volume-state-mute,
+chimee-volume.low chimee-volume-state-low,
+chimee-volume.high chimee-volume-state-high,
+chimee-control.pause chimee-control-state-pause,
+chimee-control.play chimee-control-state-play,
 chimee-control.full chimee-screen-full,
 chimee-control.small chimee-screen-small {
   display: inline-block;
-  width: 2em;
+  width: 1.4em;
   height: 100%;
 }
 
+/* 开始写具体样式 */
 chimee-control {
   position: absolute;
   bottom: 0;
@@ -50,50 +82,59 @@ chimee-control-wrap {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 2em;
-  display: table;
+  height: 2.2em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
   background: rgba(0, 0, 0, 0.5);
   transition: bottom 0.5s ease;
   pointer-events: auto;
 }
 
-.chimee-component {
-  display: table-cell;
+.chimee-flex-component {
+  order: 1;
+  flex-grow: 0;
   height: 2em;
-  padding: 0.3em 0.3em 0.2em;
-  box-sizing: border-box;
-  vertical-align: top;
   cursor: pointer;
-  width: 1%;
-  line-height: 1em;
-  white-space: nowrap;
+}
+
+.chimee-flex-component svg {
+  vertical-align: middle;
+  width: 2em;
+  height: 1.5em;
 }
 
 /* 播放器状态，播放／暂停 */
-chimee-control-state.chimee-component {
-  width: 3em;
+chimee-control-state.chimee-flex-component {
+  flex-basis: 3em;
   text-align: right;
+  margin-right: 1em;
 }
 
+/* 播放器状态，播放／暂停 动画效果 */
 chimee-control-state .left,
 chimee-control-state .right {
   transition: d 0.2s ease-in-out;
 }
 
-chimee-control-state svg {
-  width: 2em;
-  height: 1.5em;
+/* 时间显示 */
+chimee-progresstime.chimee-flex-component {
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+chimee-progresstime-pass,
+chimee-progresstime-total {
+  display: inline;
 }
 
 /* 播放器控制条 */
-chimee-progressbar.chimee-component {
-  width: auto;
+chimee-progressbar.chimee-flex-component {
+  flex-grow: 1;
   position: relative;
-}
-
-chimee-progressbar.two-line chimee-progressbar-wrap {
-  top: -1.6em;
-  height: 1.6em;
 }
 
 chimee-progressbar-wrap {
@@ -105,8 +146,15 @@ chimee-progressbar-wrap {
   top: 0;
 }
 
-chimee-progressbar.two-line .chimee-progressbar-line {
-  top: 0.8em;
+chimee-progressbar.progressbar-layout-top {
+  & chimee-progressbar-wrap {
+    top: -1.6em;
+    height: 1.6em;
+  }
+
+  & .chimee-progressbar-line {
+    top: 0.8em;
+  }
 }
 
 .chimee-progressbar-line {
@@ -119,7 +167,7 @@ chimee-progressbar.two-line .chimee-progressbar-line {
 
 chimee-progressbar-bg {
   width: 100%;
-  background: #4c4c4c;
+  background: var(--trackColor);
 }
 
 chimee-progressbar-buffer {
@@ -128,7 +176,7 @@ chimee-progressbar-buffer {
 }
 
 chimee-progressbar-all {
-  background: #de698c;
+  background: var(--barColor);
 }
 
 chimee-progressbar-ball {
@@ -159,37 +207,25 @@ chimee-progressbar-tip {
   text-align: center;
 }
 
-/* 时间显示 */
-chimee-progresstime.chimee-component {
-  color: #fff;
-  font-weight: normal;
-  text-align: center;
-  white-space: nowrap;
-  padding: 0.5em;
-}
-
-chimee-progresstime-pass,
-chimee-progresstime-total {
-  display: inline;
-}
-
 /* 音量控制 */
+chimee-volume.chimee-flex-component.vertical {
+  padding-right: 1em;
+  flex-basis: 2em;
+}
 
-chimee-volume.chimee-component {
+chimee-volume.chimee-flex-component {
   cursor: pointer;
   padding: 0;
-  width: 7em;
+  flex-basis: 7em;
+  white-space: nowrap;
+  margin-right: 1em;
+  position: relative;
 }
 
 chimee-volume-state {
   display: inline-block;
   width: 2em;
-  vertical-align: 4px;
-}
-
-chimee-volume-state svg {
-  width: 2em;
-  height: 1.5em;
+  vertical-align: top;
 }
 
 chimee-volume .ring1,
@@ -215,66 +251,123 @@ chimee-volume.low .ring2 {
   stroke-dashoffset: 0;
 }
 
-chimee-volume-bar {
-  position: relative;
+chimee-volume.vertical:hover chimee-volume-bar {
   display: inline-block;
-  width: 4em;
-  height: 100%;
-  margin: 0 0.5em;
 }
 
-chimee-volume-bar-all,
-chimee-volume-bar-bg {
+chimee-volume.vertical chimee-volume-bar {
   position: absolute;
-  top: 1em;
-  left: 0;
-  display: inline-block;
-  height: 3px;
+  top: -7em;
+  left: -0.2em;
+  width: 2em;
+  height: 4em;
+  padding-bottom: 3em;
+  display: none;
+  vertical-align: middle;
 }
 
-chimee-volume-bar-bg {
-  width: 100%;
-  background: #4c4c4c;
-}
-
-chimee-volume-bar-all {
-  background: #de698c;
-}
-
-chimee-volume-bar-ball {
+chimee-volume.vertical chimee-volume-bar::before {
   content: '';
   position: absolute;
-  right: -0.2em;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 1em;
+  background: #212121;
+  border-radius: 4px;
+}
+
+chimee-volume.vertical chimee-volume-bar-wrap {
+  display: inline-block;
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  top: 1em;
+  right: 0;
+  height: 4em;
+}
+
+chimee-volume.vertical chimee-volume-bar-all,
+chimee-volume.vertical chimee-volume-bar-bg {
+  position: absolute;
+  bottom: 0;
+  left: 1em;
+  display: inline-block;
+  width: 2px;
+  border-radius: 4px;
+}
+
+chimee-volume.vertical chimee-volume-bar-bg {
+  height: 4em;
+  background: var(--trackColor);
+  opacity: 0.5;
+}
+
+chimee-volume.vertical chimee-volume-bar-all {
+  background: var(--barColor);
+}
+
+chimee-volume.vertical chimee-volume-bar-all::after {
+  content: '';
+  position: absolute;
+  right: -0.34em;
+  top: -0.4em;
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 0.8em;
+  background: #fff;
+  pointer-events: none;
+}
+
+chimee-volume.horizonal chimee-volume-bar {
+  position: relative;
+  height: 1.2em;
+  width: 4em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+chimee-volume.horizonal chimee-volume-bar-all,
+chimee-volume.horizonal chimee-volume-bar-bg {
+  position: absolute;
+  top: 0.4em;
+  left: 0;
+  display: inline-block;
+  height: 2px;
+}
+
+chimee-volume.horizonal chimee-volume-bar-bg {
+  width: 4em;
+  background: var(--trackColor);
+  opacity: 0.5;
+}
+
+chimee-volume.horizonal chimee-volume-bar-all {
+  background: var(--barColor);
+}
+
+chimee-volume.horizonal chimee-volume-bar-all::after {
+  content: '';
+  position: absolute;
+  right: -0.4em;
   top: -0.3em;
   display: inline-block;
   width: 0.8em;
   height: 0.8em;
   border-radius: 0.8em;
   background: #fff;
+  pointer-events: none;
 }
 
 /* 全屏 */
-chimee-screen.chimee-component {
-  width: 3em;
+chimee-screen.chimee-flex-component {
+  flex-basis: 3em;
   text-align: left;
 }
 
-chimee-screen-small {
-  background: url(./image/enlarge.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-}
-
-chimee-screen-full {
-  background: url(./image/shrink.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-}
-
 /* 清晰度切换 */
-chimee-clarity.chimee-component {
+chimee-clarity.chimee-flex-component {
   position: relative;
   color: #fff;
   height: 1.75em;
@@ -309,5 +402,5 @@ chimee-clarity-list li {
 
 chimee-clarity-list li:hover,
 chimee-clarity-list li.active {
-  color: #57b0f6;
+  color: var(--barColor);
 }
