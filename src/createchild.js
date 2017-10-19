@@ -74,7 +74,7 @@ export function createChild (plugin) {
           break;
         case 'clarity':
           if(childConfig.clarity && Array.isArray(childConfig.clarity.list)) {
-            children.screen = new Clarity(plugin, childConfig.clarity);
+            children.clarity = new Clarity(plugin, childConfig.clarity);
           }
           break;
         default:

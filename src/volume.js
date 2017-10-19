@@ -74,7 +74,6 @@ export default class Volume extends Base {
     this.layout = this.option.layout === 'vertical' ? 'vertical' : 'horizonal';
 
     // 判断是否是默认或者用户提供 icon
-    console.log(this.option)
     if(this.option.icon && this.option.icon.mute && this.option.icon.low) {
       this.option.icon.high = this.option.icon.high || this.option.icon.low;
       this.$mute = this.$dom.find('chimee-volume-state-mute');

@@ -51,60 +51,244 @@ plugin: [{
 }]
 ```
 
-## 属性
+### 具体的参数配置
 
-## 目前支持的小组件
+#### name
+  * 类型： string
+  * 含义： 该插件名字， 在 chimee 中使用需要名字，需要唯一对应
+  * 值： 'chimeeControl' | chimeePluginControlbar.name
+  * 必需
 
-1. `play`: 播放控制组件
-2. `volume`: 声音控制组件
-3. `progressTime`: 时间展示组件，用来展示播放时间／开播时间／视频总时长
-4. `progressBar`: 进度条控制组件
-  * layout: 
-    * `two-line` 进度条在整个进度条的上方， 否则为同一行
-5. `screen`: 全屏切换组件
-6.  `clarity`: 切换清晰度组件，如果没有给出清晰度列表则不初始化该组件
-  * list: 清晰度列表， 包含 `src` 中的 url， 如果没有给出，则不加载这个组件
+#### majorColor
+  * 类型： string
+  * 作用范围：
+    * 该插件中，所有的 svg 图
+    * 播放进度条，进度颜色
+    * 声音控制条，音量颜色
+  * 可选值： 十六进制颜色('#fff')
+  * 默认值： '#de698c'
+  * 非必需
 
-## 使用方式
+#### hoverColor
+  * 类型： string
+  * 作用范围：
+    * 该插件中，所有的 svg 图
+  * 可选值： 十六进制颜色('#fff')
+  * 默认值： '#4c4c4c'
+  * 非必需
 
-1. 默认方式: 目前大部分播放器，最常用的组件的排列方式，分直播／点播两种
-* 点播时子组件的排列顺序: 播放控制组件 > 时间控制组件 > 进度条控制组件 > 声音控制组件 > 全屏切换组件
-* 直播时子组件的排列顺序: 播放控制组件 > 时间控制组件 > 声音控制组件 > 全屏切换组件
+#### children
+  * 类型： Object
+  * 含义： 配置子组件是否展示／展示方式，还可以自己扩展子组件
+  * 非必需
+  * 目前支持的组件： play, progressTime, progressBar, volume, screen, clarity
+  
+##### 目前支持的组件及配置
 
-```javascript
-const chimee = new Chimee({
-  wrapper: '#wrap',
-  src: '',
-  live: true,
-  plugin: ['controlbar']
-});
-```
+  * play
+    * 类型： Object
+    * 含义： 配置播放暂停键 icon 及事件
+    * 默认： {}
+    * 可配置属性：
+      * icon: play / pause 图标， 支持 svg 图 
+      * animate: 当前是一个 svg path 动画， 可以传 path 来实现你想要的动画
+      * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
+      * 注意： icon 同时配置时，会取 icon 中的值
 
-2. 自定义: 按照自己的想法，排列已有的组件，也可以新建一个自定义组件，或者更改已有组件的配置
+    配置 🌰
 
-```javascript
-    const chimee = new Chimee({
-      wrapper: '#wrap',
-      src: 'http://cdn.toxicjohann.com/lostStar.mp4',
-      plugin: [{
-        name: chimeePluginControlbar.name,
-        children: {
-          play: true,
-          progressBar: {
-            layout: 'up'
+    ```javascirpt
+    {
+      // 可以传两个 icon 来切换播放暂停状态
+      icon: {
+        play: '',
+        pause: ''
+      },
+      // 当前是一个 svg path 动画， 可以传 path 来实现你想要的动画
+      animate: {
+        path: {
+          play: {
+            left: ''
           },
-          screen: true
+          pause: {
+            left: ''
+          }
         }
-      }],
-      controls: true,
-      autoplay: false
-    });
-```
+      },
+      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom
+      event: {
+        click () {
+          console.log('');
+        }
+      }
+    }
+    ```
 
+  * progressTime
+    * 类型： Object
+    * 含义： 时间展示组件，用来展示播放时间／开播时间／视频总时长
+    * 默认： {}
+    * 可配置属性：
+      * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
 
-## 注意
+    配置 🌰
 
-1. 这个控制条目前采用 table 布局（稳定／兼容性好）支持ie9.
-2. 每个组件都有自己的固定宽度（除了进度条控制组件，占据剩余宽度），如果不设置的话， 默认是 2em.
+    ```javascirpt
+    {
+      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom
+      event: {
+        click () {
+          console.log('');
+        }
+      }
+    }
+    ```
 
-## 如何自定义插件顺序
+  * progressBar
+    * 类型： Object
+    * 含义： 进度条控制组件
+    * 默认： {}
+    * 可配置属性：
+      * layout: 有两种位置， 一是，居中布局。二是，位于整个控制条顶部。
+        * 可选值： 'top' ／ 'baseline'(默认)
+      * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
+
+    配置 🌰
+
+    ```javascirpt
+    {
+      layout: 'top',
+
+      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom
+      event: {
+        click () {
+          console.log('');
+        }
+      }
+    }
+    ```
+
+  * volume
+    * 类型： Object
+    * 含义： 声音控制组件
+    * 默认： {}
+    * 可配置属性：
+      * layout: 有两种位置， 一是，垂直。二是，水平。
+        * 可选值： 'vertical' ／ 'horizonal'(默认)
+      * icon: 音量按钮的三个状态按钮，mute / low ／ high 最少写前两个
+      * [暂时不支持]animate: 也可以配置，然后自己通过 css 来控制
+      * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
+
+    配置 🌰
+
+    ```javascirpt
+    volume: {
+      icon: {
+        low: ``,
+        mute: ``,
+        high: ``
+      },
+      layout: 'vertical',
+
+      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom
+      event: {
+        click () {
+          console.log('');
+        }
+      }
+    },
+    ```
+
+  * screen
+    * 类型： Object
+    * 含义： 配置全屏／非全屏 icon 及事件
+    * 默认： {}
+    * 可配置属性：
+      * icon: full / small 图标， 支持 svg 图
+      * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
+
+    配置 🌰
+
+    ```javascirpt
+    {
+      // 可以传两个 icon 来切换播放暂停状态
+      icon: {
+        full: '',
+        small: ''
+      },
+
+      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom
+      event: {
+        click () {
+          console.log('');
+        }
+      }
+    }
+    ```
+
+  * clarity
+    * 类型： Object
+    * 含义： 切换清晰度组件
+    * 默认： {}
+    * 可配置参数
+      * list: []
+      * 
+    * 注意空数组时不展示
+
+    配置 🌰
+
+    ```javascirpt
+    {
+      list: [
+        {name: '标清', src:''},
+        {name: '高清', src: ''},
+        {name: '原画', src: ''}
+      ],
+      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom
+      event: {
+        click () {
+          console.log('');
+        }
+      }
+    }
+    ```
+  
+  * 自定义组件
+    * 类型： Object
+    * 含义： 自定义组件
+    * 可配置属性：
+      * tag: 自定义标签名
+      * html: 自定义标签中的 html 内容
+      * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
+    * 注意： css 写在自己项目中就好了
+
+    配置 🌰
+
+    ```javascirpt
+    {
+      tag: '',
+      html: ``,
+      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom
+      event: {
+        click () {
+          console.log('');
+        }
+      }
+    }
+    ```
+
+##### 组件相关问题
+
+* Q: 子组件的默认顺序是什么？
+
+  A: 在 children 没有配置的情况下会采用下面的顺序
+    * 直播： play, progressTime, volume, screen
+    * 点播： play, progressTime, progressTime, volume, screen
+
+* Q: 我可以控制顺序吗？
+
+  A: 在 children 对象中，属性的书写顺序就是渲染顺序
+
+* Q: 为什么我配置了一个组件后，其他默认组件就都不存在了？
+
+  A: 假如 children 配置后， 会读 children 的属性，并渲染， 不会补充其他组件，所以，需要你把所有的组件都写.

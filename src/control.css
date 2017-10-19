@@ -214,11 +214,6 @@ chimee-progressbar-tip {
 }
 
 /* 音量控制 */
-chimee-volume.chimee-flex-component.vertical {
-  padding-right: 1em;
-  flex-basis: 2em;
-}
-
 chimee-volume.chimee-flex-component {
   cursor: pointer;
   padding: 0;
@@ -228,12 +223,18 @@ chimee-volume.chimee-flex-component {
   position: relative;
 }
 
+chimee-volume.chimee-flex-component.vertical {
+  padding-right: 1em;
+  flex-basis: 2em;
+}
+
 chimee-volume-state {
   display: inline-block;
   width: 2em;
   vertical-align: top;
 }
 
+/* 动画所用到的元素 css */
 chimee-volume .ring1,
 chimee-volume .ring2,
 chimee-volume .line {
@@ -281,6 +282,14 @@ chimee-volume.vertical chimee-volume-bar::before {
   bottom: 1em;
   background: #212121;
   border-radius: 4px;
+}
+
+chimee-volume.horizonal chimee-volume-bar {
+  position: relative;
+  height: 1.2em;
+  width: 4em;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 chimee-volume.vertical chimee-volume-bar-wrap {

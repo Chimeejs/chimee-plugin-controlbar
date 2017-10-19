@@ -4,14 +4,20 @@ import './control.css';
 import {createChild} from './createchild.js';
 
 const majorColorStyle = `
-  .chimee-component svg g{
+  .chimee-flex-component svg g{
     fill: majorColor;
     stroke: majorColor;
+  }
+  chimee-progressbar-all{
+    background: majorColor;
+  }
+  chimee-volume.chimee-flex-component chimee-volume-bar-all{
+    background: majorColor;    
   }
 `;
 
 const hoverColorStyle = `
-  .chimee-component svg:hover g{
+  .chimee-flex-component svg:hover g{
     fill: hoverColor;
     stroke: hoverColor;
   }
@@ -213,7 +219,8 @@ const chimeeControl = {
       css += this.config.majorColor ? majorColorStyle.replace(/majorColor/g, this.config.majorColor) : '';
       css += this.config.hoverColor ? hoverColorStyle.replace(/hoverColor/g, this.config.hoverColor) : '';
       const style = document.createElement('style');
-      style.innerText = css;
+      style.setAttribute('type', 'text/css');
+      style.innerHTML = css;
       document.head.appendChild(style);
     }
   }
