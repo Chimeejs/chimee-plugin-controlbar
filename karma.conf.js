@@ -1,7 +1,14 @@
 // Karma configuration
 // Generated on Thu Aug 03 2017 16:41:10 GMT+0800 (CST)
-// const babel = require('rollup-plugin-babel');
-const path = require('path');
+
+const babel = require('rollup-plugin-babel');
+const resolve = require('rollup-plugin-node-resolve');
+const commonjs = require('rollup-plugin-commonjs');
+const postcss = require('rollup-plugin-postcss');
+const replace = require('rollup-plugin-replace');
+// PostCSS plugins
+const cssnext = require('postcss-cssnext');
+
 module.exports = function (config) {
   config.set({
 
@@ -14,8 +21,8 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/**.js',
-      '__test__/*.js'
+      {pattern: 'src/**.js', watched: false},
+      {pattern: '__test__/**.js', watched: false},
     ],
 
     // list of files to exclude
@@ -26,40 +33,37 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/*.js': ['webpack', 'coverage'],
-      '__test__/*.js': ['webpack']
+      'src/**.js': ['rollup', 'coverage'],
+      '__test__/**.js': ['rollup']
     },
-
-    webpack: {
-      module: {
-        rules: [
-          {
-            test: /\.css$/,
-            use: [
-              {loader: 'style-loader', options: {insertAt: 'bottom'}},
-              {loader: 'css-loader', options: {importLoaders: 1}}
-            ]
-          },
-          {
-            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-            use: { loader: 'url-loader', options: { limit: 100000 } }
-          },
-          {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'babel-loader'
-            }
-          }
-        ],
-        strictThisContextOnImports: true
-      },
-      resolve: {
-        mainFields: ['module', 'browser', 'main'],
-        modules: [path.resolve('./src'), 'node_modules']
-      },
+    rollupPreprocessor: {
+      plugins: [
+        postcss({
+          plugins: [
+            cssnext()
+          ],
+          extensions: ['.css']
+        }),
+        babel({
+          presets: ['es2015-rollup', 'stage-0'],
+          plugins: [
+            'transform-decorators-legacy',
+            'transform-runtime'
+          ],
+          exclude: 'node_modules/**',
+          runtimeHelpers: true,
+          babelrc: false
+        }),
+        resolve(),
+        commonjs(),
+        replace({
+          'process.env.NODE_ENV': '"production"'
+        })
+      ],
+      format: 'iife',
+      name: 'controlbar',
+      sourcemap: 'inline'
     },
-
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter

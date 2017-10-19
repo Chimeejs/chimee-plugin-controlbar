@@ -58,6 +58,7 @@ export default class Play extends Base {
       this.$pause.html(this.option.icon.pause);
     }else{
       this.animate = true;
+      this.option.animate.path = this.option.path ? this.option.path : this.option.animate.path;
       this.$dom.html(this.option.animate.icon);
       this.$left = this.$dom.find('.left');
       this.$right = this.$dom.find('.right');

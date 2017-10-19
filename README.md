@@ -32,6 +32,27 @@ const player = new chimee({
 
 ## 配置
 
+一个配置 🌰 更详细的配置例子， 可以[参考 /demo/index.html](https://github.com/Chimeejs/chimee-plugin-controlbar/blob/master/demo/index.html)
+
+```javascript
+plugin: [{
+  name: chimeePluginControlbar.name,
+  majorColor: '',
+  hoverColor: '',
+  children: {
+    volume: {
+      icon: {
+        low: '',
+        high: ''
+      },
+      layout: 'vertical'
+    }
+  }
+}]
+```
+
+## 属性
+
 ## 目前支持的小组件
 
 1. `play`: 播放控制组件

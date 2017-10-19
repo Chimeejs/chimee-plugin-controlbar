@@ -45,9 +45,8 @@ export default class ProgressBar extends Base {
     if(this.option.layout === 'top') {
       this.$dom.addClass('progressbar-layout-top');
       this.$wrap.css({
-        left: -this.$dom[0].offsetLeft + 'px',
-        // top: -this.$ball[0].offsetHeight * 2 + 'px',
-        width: this.parent.$dom.offsetWidth + 'px',
+        // left: -this.$dom[0].offsetLeft + 'px',
+        top: -this.$ball[0].offsetHeight + 'px',
         // height: this.$ball[0].offsetHeight * 2 + 'px'
       });
       // this.$line.css({
@@ -56,9 +55,6 @@ export default class ProgressBar extends Base {
       setStyle(this.parent.$wrap, 'paddingTop', this.$ball[0].offsetHeight + 'px');
 
     this.watch_screen = this.parent.$watch('isFullScreen', () => {
-      this.$wrap.css({
-        width: this.parent.$dom.offsetWidth + 'px'
-      });
       this.update();
     });
   }

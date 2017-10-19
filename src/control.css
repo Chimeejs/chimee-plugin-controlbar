@@ -133,8 +133,8 @@ chimee-progresstime-total {
 
 /* 播放器控制条 */
 chimee-progressbar.chimee-flex-component {
-  flex-grow: 1;
   position: relative;
+  flex-grow: 1;
 }
 
 chimee-progressbar-wrap {
@@ -147,12 +147,17 @@ chimee-progressbar-wrap {
 }
 
 chimee-progressbar.progressbar-layout-top {
+  position: static;
+
   & chimee-progressbar-wrap {
     top: -1.6em;
     height: 1.6em;
+    left: 0.8em;
+    right: 0;
   }
 
   & .chimee-progressbar-line {
+    left: 0;
     top: 0.8em;
   }
 }
@@ -176,6 +181,7 @@ chimee-progressbar-buffer {
 }
 
 chimee-progressbar-all {
+  margin-left: -0.8em;
   background: var(--barColor);
 }
 

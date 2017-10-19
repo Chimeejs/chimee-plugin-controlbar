@@ -147,7 +147,17 @@ const chimeeControl = {
       !this.disabled && this.children.play && this.children.play.click(e);
     },
     click (e) {
-      !this.disabled && this.children.play && this.children.play.click(e);
+      const time = new Date();
+      const preTime = this.clickTime;
+      this.clickTime = time;
+      if(time - preTime < 300) {
+        clearTimeout(this.clickTimeId);
+        return;
+      }
+      this.clickTimeId = setTimeout(() => {
+        !this.disabled && this.children.play && this.children.play.click(e);
+      }, 300);
+      
     },
     dblclick (e) {
       // this.dblclick = true;
