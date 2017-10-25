@@ -19,6 +19,7 @@ video:focus {
 /* 用到的变量 */
 :root {
   --barColor: #de698c;
+
   --trackColor: #4c4c4c;
 }
 
@@ -385,6 +386,7 @@ chimee-screen.chimee-flex-component {
 chimee-clarity.chimee-flex-component {
   position: relative;
   color: #fff;
+  width: 6em;
   height: 1.75em;
   padding: 0;
   padding-right: 1em;
@@ -394,10 +396,20 @@ chimee-clarity.chimee-flex-component {
   font-size: 16px;
 }
 
+chimee-clarity.chimee-flex-component:hover chimee-clarity-list {
+  display: inline-block;
+}
+
+chimee-clarity.chimee-flex-component svg {
+  width: auto;
+  height: auto;
+}
+
 chimee-clarity-list {
   position: absolute;
-  left: -1em;
-  width: 6em;
+  left: 0;
+  bottom: 1em;
+  width: 100%;
   padding-bottom: 1.5em;
   opacity: 0.8;
   box-sizing: content-box;
@@ -406,7 +418,7 @@ chimee-clarity-list {
 
 chimee-clarity-list ul {
   margin: 0;
-  padding: 1em 0;
+  padding: 0.5em 0;
   background: #292929;
   line-height: 2em;
 }
@@ -418,4 +430,10 @@ chimee-clarity-list li {
 chimee-clarity-list li:hover,
 chimee-clarity-list li.active {
   color: var(--barColor);
+}
+
+chimee-clarity-list-arrow {
+  position: absolute;
+  bottom: 1.5em;
+  width: 100%;
 }

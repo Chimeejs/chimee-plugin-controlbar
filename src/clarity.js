@@ -1,10 +1,6 @@
 import {deepAssign, isObject, addClassName, removeClassName, setStyle, $} from 'chimee-helper';
 import Base from './base.js';
 
-function getComputedStyleNum (elem, prop) {
-  return parseInt(getComputedStyle(elem)[prop]);
-}
-
 /**
  * play 配置
  */
@@ -12,7 +8,7 @@ function getComputedStyleNum (elem, prop) {
 const defaultOption = {
   tag: 'chimee-clarity',
   width: '2em',
-  defaultHtml: `
+  html: `
     <chimee-clarity-text></chimee-clarity-text>
     <chimee-clarity-list>
       <ul></ul>
@@ -26,8 +22,6 @@ const defaultOption = {
     </chimee-clarity-list>
   `,
   defaultEvent: {
-    mouseenter: 'mouseenter',
-    mouseleave: 'mouseleave',
     click: 'click'
   }
 };
@@ -41,7 +35,7 @@ export default class Clarity extends Base {
 
   init () {
     super.create();
-    addClassName(this.$dom, 'chimee-component');
+    addClassName(this.$dom, 'chimee-flex-component');
 
     this.$text = $(this.$dom).find('chimee-clarity-text');
     this.$list = $(this.$dom).find('chimee-clarity-list');
@@ -51,16 +45,6 @@ export default class Clarity extends Base {
     this.option.width && setStyle(this.$dom, 'width', this.option.width);
 
     this.initTextList();
-    // 读当前 css 设置去配置
-    const lineHeight = getComputedStyleNum(this.$listUl.find('li')[0], 'lineHeight');
-    const listPaddingBottom = getComputedStyleNum(this.$list[0], 'paddingBottom');
-    const listFontSize = getComputedStyleNum(this.$list[0], 'fontSize');
-    const ulPaddingTop = getComputedStyleNum(this.$listUl[0], 'paddingTop');
-    const ulPaddingBottom = getComputedStyleNum(this.$listUl[0], 'paddingBottom');
-    // css
-    this.$list.css({
-      top: listFontSize / 2 - listPaddingBottom - ulPaddingTop - ulPaddingBottom - this.option.list.length * lineHeight + 'px'
-    });
   }
 
   initTextList () {
@@ -74,14 +58,6 @@ export default class Clarity extends Base {
       }
       this.$listUl.append(li);
     });
-  }
-
-  mouseenter (e) {
-    this.$list.css('display', 'inline-block');
-  }
-
-  mouseleave (e) {
-    this.$list.css('display', 'none');
   }
 
   click (e) {

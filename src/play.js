@@ -49,14 +49,14 @@ export default class Play extends Base {
     super.create();
     this.$dom = $(this.$dom);
     this.$dom.addClass('chimee-flex-component');
-    
+
     // 判断是否是默认或者用户提供 icon
     if(this.option.icon && this.option.icon.play && this.option.icon.pause) {
       this.$play = this.$dom.find('chimee-control-state-play');
       this.$pause = this.$dom.find('chimee-control-state-pause');
       this.$play.html(this.option.icon.play);
       this.$pause.html(this.option.icon.pause);
-    }else{
+    }else if(!this.option.bitmap) {
       this.animate = true;
       this.option.animate.path = this.option.path ? this.option.path : this.option.animate.path;
       this.$dom.html(this.option.animate.icon);

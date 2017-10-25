@@ -22,7 +22,7 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files: [
       {pattern: 'src/**.js', watched: false},
-      {pattern: '__test__/**.js', watched: false},
+      {pattern: '__test__/**/**.js', watched: true},
     ],
 
     // list of files to exclude
@@ -34,7 +34,7 @@ module.exports = function (config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'src/**.js': ['rollup', 'coverage'],
-      '__test__/**.js': ['rollup']
+      '__test__/**/**.js': ['rollup']
     },
     rollupPreprocessor: {
       plugins: [

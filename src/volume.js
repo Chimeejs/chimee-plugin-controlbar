@@ -82,7 +82,7 @@ export default class Volume extends Base {
       this.$mute.html(this.option.icon.mute);
       this.$low.html(this.option.icon.low);
       this.$high.html(this.option.icon.high);
-    }else{
+    }else if(!this.option.bitmap) {
       this.animate = true;
       this.$state.html(this.option.animate.icon);
     }

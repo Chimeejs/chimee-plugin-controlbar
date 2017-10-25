@@ -1,13 +1,5 @@
-import play from 'src/play.js';
+import Play from '../src/play';
 
-const option = {
-  tag: 'test-state',
-  html: 'forbidden',
-  animate: 
-};
+describe('init', function () {
 
-/**
- * 传参
- */
-
-describe('校验参数', )
+});

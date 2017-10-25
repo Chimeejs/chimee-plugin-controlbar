@@ -54,7 +54,7 @@ plugin: [{
 ### 具体的参数配置
 
 #### name
-  * 类型： string
+  * 类型： string
   * 含义： 该插件名字， 在 chimee 中使用需要名字，需要唯一对应
   * 值： 'chimeeControl' | chimeePluginControlbar.name
   * 必需
@@ -90,10 +90,11 @@ plugin: [{
     * 含义： 配置播放暂停键 icon 及事件
     * 默认： {}
     * 可配置属性：
-      * icon: play / pause 图标， 支持 svg 图 
+      * bitmap: true/ false 是否是位图，默认 false， 如果用户采用位图的话，则把当前的默认 svg 都清空掉， 用户通过 css background 来自己设置图片
+      * icon: play / pause 图标， 支持 svg 图
       * animate: 当前是一个 svg path 动画， 可以传 path 来实现你想要的动画
       * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
-      * 注意： icon 同时配置时，会取 icon 中的值
+      * 注意： icon animate bitmap 都是配置图的。 bitmap 优先。其次 icon ，最后取 animate 中的值
 
     配置 🌰
 
@@ -175,9 +176,11 @@ plugin: [{
     * 可配置属性：
       * layout: 有两种位置， 一是，垂直。二是，水平。
         * 可选值： 'vertical' ／ 'horizonal'(默认)
+      * bitmap: true/ false 是否是位图，默认 false，如果用户采用位图的话，则把当前的默认 svg 都清空掉， 用户通过 css background 来自己设置图片
       * icon: 音量按钮的三个状态按钮，mute / low ／ high 最少写前两个
       * [暂时不支持]animate: 也可以配置，然后自己通过 css 来控制
       * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
+      * 注意： icon bitmap 都是配置图的。 bitmap 优先。其次 icon
 
     配置 🌰
 
@@ -204,8 +207,10 @@ plugin: [{
     * 含义： 配置全屏／非全屏 icon 及事件
     * 默认： {}
     * 可配置属性：
+      * bitmap: true/ false 是否是位图，默认 false，如果用户采用位图的话，则把当前的默认 svg 都清空掉， 用户通过 css background 来自己设置图片
       * icon: full / small 图标， 支持 svg 图
       * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
+      * 注意： icon bitmap 都是配置图的。 bitmap 优先。其次 icon
 
     配置 🌰
 
@@ -254,7 +259,7 @@ plugin: [{
     ```
   
   * 自定义组件
-    * 类型： Object
+    * 类型： Object
     * 含义： 自定义组件
     * 可配置属性：
       * tag: 自定义标签名
@@ -292,3 +297,8 @@ plugin: [{
 * Q: 为什么我配置了一个组件后，其他默认组件就都不存在了？
 
   A: 假如 children 配置后， 会读 children 的属性，并渲染， 不会补充其他组件，所以，需要你把所有的组件都写.
+
+
+## 最后
+
+欢迎各位大佬使用。有什么问题／建议，随时提。

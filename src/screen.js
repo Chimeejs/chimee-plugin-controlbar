@@ -56,15 +56,18 @@ export default class Screen extends Base {
     // addClassName(this.$dom, 'flex-item');
     this.$dom.addClass('chimee-flex-component');
 
+    this.$full = this.$dom.find('chimee-screen-full');
+    this.$small = this.$dom.find('chimee-screen-small');
     // 判断是否是默认或者用户提供 icon
     if(this.option.icon && this.option.icon.full && this.option.icon.small) {
       // if((!this.option.icon.play && this.option.icon.puase) || (this.option.icon.play && !this.option.icon.puase)) {
       //   console.warn(`Please provide a play and pause icon！If you can't, we will use default icon!`);
       // }
-      this.$full = this.$dom.find('chimee-screen-full');
-      this.$small = this.$dom.find('chimee-screen-small');
       this.$full.html(this.option.icon.full);
       this.$small.html(this.option.icon.small);
+    }else if(this.option.bitmap) {
+      this.$full.html('');
+      this.$small.html('');
     }
   }
 

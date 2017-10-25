@@ -35,7 +35,7 @@ export default class ProgressBar extends Base {
     this.$line = this.$dom.find('.chimee-progressbar-line');
     this.$ball = this.$dom.find('chimee-progressbar-ball');
     this.$dom.addClass('chimee-flex-component');
-    
+
     // css 配置
     !this.visiable && this.$dom.css('visibility', 'hidden');
      // this.$line.css({
@@ -101,13 +101,13 @@ export default class ProgressBar extends Base {
   }
   @autobind
   mousedown (e) {
-    const ballRect = this.$ball[0].getClientRects()[0];
-    const ballLeft = ballRect.left;
-    const ballRight = ballRect.left + ballRect.width;
-    this.inBall = e.clientX <= ballRight && e.clientX >= ballLeft;
+    // const ballRect = this.$ball[0].getClientRects()[0];
+    // const ballLeft = ballRect.left;
+    // const ballRight = ballRect.left + ballRect.width;
+    // this.inBall = e.clientX <= ballRight && e.clientX >= ballLeft;
     if(e.target === this.$tip[0]) return;
     this._currentTime = e.offsetX / this.$wrap[0].offsetWidth * this.parent.duration;
-    if(!this.inBall) this.update();
+    // if(!this.inBall) this.update();
     this.startX = e.clientX;
     this.startTime = this._currentTime;
     addEvent(window, 'mousemove', this.draging);
@@ -135,10 +135,10 @@ export default class ProgressBar extends Base {
   dragEnd () {
     this.startX = 0;
     this.startTime = 0;
-    if(!this.inBall) {
-      this.parent.currentTime = this._currentTime;
-      this.inBall = false;
-    }
+    // if(!this.inBall) {
+    this.parent.currentTime = this._currentTime;
+    // this.inBall = false;
+    // }
     this._currentTime = undefined;
     removeEvent(window, 'mousemove', this.draging);
     removeEvent(window, 'mouseup', this.dragEnd);

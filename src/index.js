@@ -14,6 +14,10 @@ const majorColorStyle = `
   chimee-volume.chimee-flex-component chimee-volume-bar-all{
     background: majorColor;    
   }
+  chimee-clarity-list li:hover,
+  chimee-clarity-list li.active {
+    color: majorColor;
+  }
 `;
 
 const hoverColorStyle = `
@@ -163,7 +167,7 @@ const chimeeControl = {
       this.clickTimeId = setTimeout(() => {
         !this.disabled && this.children.play && this.children.play.click(e);
       }, 300);
-      
+
     },
     dblclick (e) {
       // this.dblclick = true;
