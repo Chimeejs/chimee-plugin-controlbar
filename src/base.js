@@ -1,4 +1,4 @@
-import {addEvent, removeEvent} from 'chimee-helper';
+import {addEvent} from 'chimee-helper';
 import {bind} from 'toxic-utils';
 
 export default class Base {
