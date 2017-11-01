@@ -12,8 +12,6 @@ export default class Base {
   }
 
   destroy () {
-    this.removeAllEvent();
-    this.parent.$wrap.removeChild(this.$dom);
   }
 
   createEl () {
@@ -32,17 +30,6 @@ export default class Base {
       const key = '__' + item;
       this[key] = this.option.event[item];
       addEvent(this.$dom, item, this[key], false, false);
-    });
-  }
-
-  removeAllEvent () {
-    this.option.defaultEvent && Object.keys(this.option.defaultEvent).forEach(item => {
-      removeEvent(this.$dom, item, this[this.option.defaultEvent[item]], false, false);
-    });
-    this.option.event && Object.keys(this.option.event).forEach(item => {
-      const key = '__' + item;
-      // this[key] = this.option.event[item];
-      removeEvent(this.$dom, item, this[key], false, false);
     });
   }
 }

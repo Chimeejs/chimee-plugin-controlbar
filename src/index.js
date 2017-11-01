@@ -68,10 +68,6 @@ const chimeeControl = {
     this._setStyle();
   },
   destroy () {
-    for(const i in this.children) {
-      this.children[i].destroy();
-    }
-    this.$dom.parentNode.removeChild(this.$dom);
     window.clearTimeout(this.timeId);
   },
   inited () {

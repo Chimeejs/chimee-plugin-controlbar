@@ -1,4 +1,4 @@
-import {deepAssign, isObject, formatTime, addClassName, $, addEvent, removeEvent, setStyle} from 'chimee-helper';
+import {deepAssign, isObject, formatTime, $, addEvent, removeEvent, setStyle} from 'chimee-helper';
 import {autobind} from 'toxic-decorators';
 import Base from './base.js';
 

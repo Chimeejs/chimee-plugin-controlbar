@@ -1,6 +1,6 @@
 {
   "name": "chimee-plugin-controlbar",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "controlbar for chimee",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
