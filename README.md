@@ -56,7 +56,7 @@ plugin: [{
 #### name
   * 类型： string
   * 含义： 该插件名字， 在 chimee 中使用需要名字，需要唯一对应
-  * 值： 'chimeeControl' | chimeePluginControlbar.name
+  * 值： 'chimeeControl' | chimeePluginControlbar.name
   * 必需
 
 #### majorColor
@@ -152,7 +152,7 @@ plugin: [{
     * 可配置属性：
       * layout: 有两种位置， 一是，居中布局。二是，位于整个控制条顶部。
         * 可选值： 'top' ／ 'baseline'(默认)
-      * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
+      * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
 
     配置 🌰
 
@@ -171,7 +171,7 @@ plugin: [{
 
   * volume
     * 类型： Object
-    * 含义： 声音控制组件
+    * 含义： 声音控制组件
     * 默认： {}
     * 可配置属性：
       * layout: 有两种位置， 一是，垂直。二是，水平。
@@ -292,11 +292,11 @@ plugin: [{
 
 * Q: 我可以控制顺序吗？
 
-  A: 在 children 对象中，属性的书写顺序就是渲染顺序
+  A: 在 children 对象中，属性的书写顺序就是渲染顺序
 
 * Q: 为什么我配置了一个组件后，其他默认组件就都不存在了？
 
-  A: 假如 children 配置后， 会读 children 的属性，并渲染， 不会补充其他组件，所以，需要你把所有的组件都写.
+  A: 假如 children 配置后， 会读 children 的属性，并渲染， 不会补充其他组件，所以，需要你把所有的组件都写.
 
 
 ## 最后
