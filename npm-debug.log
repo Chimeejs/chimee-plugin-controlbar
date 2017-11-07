@@ -1,0 +1,158 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/lib/node_modules/@q/qnpm/node_modules/.bin/npm',
+1 verbose cli   '--userconfig=/Users/yandeqiang/.qnpmrc',
+1 verbose cli   '--disturl=https://npm.taobao.org/mirrors/node',
+1 verbose cli   '--cache=/Users/yandeqiang/.qnpm',
+1 verbose cli   '--registry=http://registry.npm.qiwoo.org',
+1 verbose cli   '--node-gyp=/usr/local/lib/node_modules/@q/qnpm/node_modules/node-gyp/bin/node-gyp.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.10
+3 info using node@v8.4.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/yandeqiang/Desktop/git/chimee-plugin-controlbar',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/yandeqiang/.qnpm/chimee-plugin-controlbar/0.2.6/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/yandeqiang/.qnpm correctMkdir not in flight; initializing
+10 info lifecycle chimee-plugin-controlbar@0.2.6~prepublish: chimee-plugin-controlbar@0.2.6
+11 silly lifecycle chimee-plugin-controlbar@0.2.6~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/yandeqiang/.qnpm/chimee-plugin-controlbar/0.2.6/package.tgz',
+12 verbose tar pack   '/Users/yandeqiang/Desktop/git/chimee-plugin-controlbar' ]
+13 verbose tarball /Users/yandeqiang/.qnpm/chimee-plugin-controlbar/0.2.6/package.tgz
+14 verbose folder /Users/yandeqiang/Desktop/git/chimee-plugin-controlbar
+15 verbose addLocalTarball adding from inside cache /Users/yandeqiang/.qnpm/chimee-plugin-controlbar/0.2.6/package.tgz
+16 verbose correctMkdir /Users/yandeqiang/.qnpm correctMkdir not in flight; initializing
+17 silly cache afterAdd chimee-plugin-controlbar@0.2.6
+18 verbose afterAdd /Users/yandeqiang/.qnpm/chimee-plugin-controlbar/0.2.6/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/yandeqiang/.qnpm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/yandeqiang/.qnpm/chimee-plugin-controlbar/0.2.6/package/package.json written
+21 silly publish { name: 'chimee-plugin-controlbar',
+21 silly publish   version: '0.2.6',
+21 silly publish   description: 'controlbar for chimee',
+21 silly publish   main: 'lib/index.js',
+21 silly publish   module: 'lib/index.mjs',
+21 silly publish   'jsnext:main': 'lib/index.mjs',
+21 silly publish   browser: 'lib/index.browser.js',
+21 silly publish   scripts:
+21 silly publish    { test: 'karma start karma.conf.js',
+21 silly publish      lint: 'eslint ./src --fix',
+21 silly publish      precommit: 'npm run lint',
+21 silly publish      build: 'npm run b-common && npm run b-es && npm run b-umd && npm run b-min',
+21 silly publish      'b-common': 'rollup -c build/rollup.config.common.js',
+21 silly publish      'b-es': 'rollup -c build/rollup.config.es.js',
+21 silly publish      'b-umd': 'rollup -c build/rollup.config.umd.js',
+21 silly publish      'b-min': 'rollup -c build/rollup.config.min.js' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/Chimeejs/chimee-plugin-controlbar.git' },
+21 silly publish   keywords: [ 'plugin', 'chimee', 'controlbar', 'video' ],
+21 silly publish   author: { name: 'yandeqiang' },
+21 silly publish   license: 'ISC',
+21 silly publish   bugs: { url: 'https://github.com/Chimeejs/chimee-plugin-controlbar/issues' },
+21 silly publish   homepage: 'https://github.com/Chimeejs/chimee-plugin-controlbar#readme',
+21 silly publish   dependencies:
+21 silly publish    { 'babel-runtime': '^6.23.0',
+21 silly publish      'chimee-helper': '^0.1.10',
+21 silly publish      husky: '^0.14.3',
+21 silly publish      'rollup-plugin-replace': '^2.0.0',
+21 silly publish      'toxic-decorators': '^0.3.3' },
+21 silly publish   devDependencies:
+21 silly publish    { 'babel-eslint': '^7.2.3',
+21 silly publish      'babel-plugin-transform-decorators': '^6.24.1',
+21 silly publish      'babel-plugin-transform-decorators-legacy': '^1.3.4',
+21 silly publish      'babel-plugin-transform-runtime': '^6.23.0',
+21 silly publish      'babel-preset-es2015-rollup': '^3.0.0',
+21 silly publish      'babel-preset-latest': '^6.24.1',
+21 silly publish      'babel-preset-stage-0': '^6.24.1',
+21 silly publish      chimee: '^0.2.7',
+21 silly publish      cssnano: '^3.10.0',
+21 silly publish      eslint: '^4.2.0',
+21 silly publish      'jasmine-core': '^2.7.0',
+21 silly publish      karma: '^1.7.0',
+21 silly publish      'karma-chrome-launcher': '^2.2.0',
+21 silly publish      'karma-coverage': '^1.1.1',
+21 silly publish      'karma-html2js-preprocessor': '^1.1.0',
+21 silly publish      'karma-jasmine': '^1.1.0',
+21 silly publish      'karma-rollup-plugin': '^0.2.4',
+21 silly publish      'karma-rollup-preprocessor': '^5.0.1',
+21 silly publish      'postcss-base64': '^0.7.1',
+21 silly publish      'postcss-cssnext': '^3.0.2',
+21 silly publish      'postcss-reporter': '^5.0.0',
+21 silly publish      rollup: '^0.50.0',
+21 silly publish      'rollup-plugin-babel': '^2.7.1',
+21 silly publish      'rollup-plugin-commonjs': '^8.0.2',
+21 silly publish      'rollup-plugin-node-resolve': '^3.0.0',
+21 silly publish      'rollup-plugin-postcss': '^0.5.3',
+21 silly publish      'rollup-plugin-uglify': '^2.0.1',
+21 silly publish      'rollup-watch': '^4.3.1',
+21 silly publish      stylelint: '^8.0.0',
+21 silly publish      'stylelint-config-standard': '^17.0.0',
+21 silly publish      'toxic-decorators': '^0.3.6' },
+21 silly publish   readme: '# chimee-plugin-controlbar\n\n## install\n\n安装\n\n```shell\n# 依赖于 chimee， 首先需要安装 chimee\nnpm install chimee\n# 安装控制条组件\nnpm install chimee-plugin-controlbar\n```\n\n使用\n\n```javascript\nimport chimee from \'chimee\';\nimport chimeePluginControlbar from \'chimee-plugin-controlbar\';\n\n// 安装插件\nchimee.install(chimeeControlbar);\nconst player = new chimee({\n  // ...\n  // 使用插件\n  plugin: [\n    chimeePluginControlbar.name\n  ]\n});\n```\n\n**也可以在页面中引用 `/lib/index.browser.js` 然后在页面中使用 chimeePluginControlbar**\n\n## 配置\n\n一个配置 🌰 更详细的配置例子， 可以[参考 /demo/index.html](https://github.com/Chimeejs/chimee-plugin-controlbar/blob/master/demo/index.html)\n\n```javascript\nplugin: [{\n  name: chimeePluginControlbar.name,\n  majorColor: \'\',\n  hoverColor: \'\',\n  children: {\n    volume: {\n      icon: {\n        low: \'\',\n        high: \'\'\n      },\n      layout: \'vertical\'\n    }\n  }\n}]\n```\n\n### 具体的参数配置\n\n#### name\n  * 类型： string\n  * 含义： 该插件名字， \b在 chimee 中使用需要名字，需要唯一对应\n  * \b值： \'chimeeControl\' | chimeePluginControlbar.name\n  * 必需\n\n#### majorColor\n  * 类型： \bstring\n  * 作用范围：\n    * 该插件中，所有的 svg 图\n    * 播放进度条，进度颜色\n    * 声音控制条，音量颜色\n  * 可选值： 十六进制颜色(\'#fff\')\n  * 默认值： \'#de698c\'\n  * 非必需\n\n#### hoverColor\n  * 类型： \bstring\n  * 作用范围：\n    * 该插件中，所有的 svg 图\n  * 可选值： 十六进制颜色(\'#fff\')\n  * 默认值： \'#4c4c4c\'\n  * 非必需\n\n#### children\n  * 类型： Object\n  * 含义： 配置子组件是否展示／展示方式，还可以自己扩展子组件\n  * 非必需\n  * 目前支持的组件： play, progressTime, progressBar, volume, screen, clarity\n  \n##### 目前支持的组件及配置\n\n  * play\n    * 类型： Object\n    * \b含义： 配置播放暂停键 icon 及事件\n    * 默认： {}\n    * 可配置属性：\n      * bitmap: true/ false 是否是位图，默认 false， 如果用户采用位图的话，则把当前的默认 svg 都清空掉， 用户通过 css background 来自己设置图片\n      * icon: play / pause \b图标， 支持 svg 图\n      * animate: 当前是一个\b svg path 动画，\b 可以传 path 来实现你想要的动画\n      * event: 绑定 dom 事件， this 指向这个插件， \b通过 this.$dom 可以拿到 dom \b节点\n      * 注意： icon animate bitmap 都是配置图的。 bitmap 优先。其次 icon ，最后取 animate 中的值\n\n    配置 🌰\n\n    ```javascirpt\n    {\n      // 可以传两个 icon 来切换播放暂停状态\n      icon: {\n        play: \'\',\n        pause: \'\'\n      },\n      // 当前是一个\b svg path 动画，\b 可以传 path 来实现你想要的动画\n      animate: {\n        path: {\n          play: {\n            left: \'\'\n          },\n          pause: {\n            left: \'\'\n          }\n        }\n      },\n      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom\n      event: {\n        click () {\n          console.log(\'\');\n        }\n      }\n    }\n    ```\n\n  * progressTime\n    * 类型： Object\n    * \b含义： 时间展示组件，用来展示播放时间／开播时间／视频总时长\n    * 默认： {}\n    * 可配置属性：\n      * event: 绑定 dom 事件， this 指向这个插件， \b通过 this.$dom 可以拿到 dom \b节点\n\n    配置 🌰\n\n    ```javascirpt\n    {\n      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom\n      event: {\n        click () {\n          console.log(\'\');\n        }\n      }\n    }\n    ```\n\n  * progressBar\n    * 类型： Object\n    * \b含义： 进度条控制组件\n    * 默认： {}\n    * 可配置属性：\n      * layout: 有两种位置， 一是，居中布局。二是，位于整个控制条顶部。\n        * 可选值： \'top\' ／ \'baseline\'(默认)\n      * event: 绑定 dom 事件， this 指向这个插件， \b通过 this.$dom 可以拿到 dom \b节点\n\n    配置 🌰\n\n    ```javascirpt\n    {\n      layout: \'top\',\n\n      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom\n      event: {\n        click () {\n          console.log(\'\');\n        }\n      }\n    }\n    ```\n\n  * volume\n    * 类型： Object\n    * \b含义： 声音控制组件\n    * 默认： {}\n    * 可配置属性：\n      * layout: 有两种位置， 一是，垂直。二是，水平。\n        * 可选值： \'vertical\' ／ \'horizonal\'(默认)\n      * bitmap: true/ false 是否是位图，默认 false，如果用户采用位图的话，则把当前的默认 svg 都清空掉， 用户通过 css background 来自己设置图片\n      * icon: 音量按钮的三个状态按钮，mute / low ／ high 最少写前两个\n      * [暂时不支持]animate: 也可以配置，然后自己通过 css 来控制\n      * event: 绑定 dom 事件， this 指向这个插件， \b通过 this.$dom 可以拿到 dom \b节点\n      * 注意： icon bitmap 都是配置图的。 bitmap 优先。其次 icon\n\n    配置 🌰\n\n    ```javascirpt\n    volume: {\n      icon: {\n        low: ``,\n        mute: ``,\n        high: ``\n      },\n      layout: \'vertical\',\n\n      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom\n      event: {\n        click () {\n          console.log(\'\');\n        }\n      }\n    },\n    ```\n\n  * screen\n    * 类型： Object\n    * \b含义： 配置全屏／非全屏 icon 及事件\n    * 默认： {}\n    * 可配置属性：\n      * bitmap: true/ false 是否是位图，默认 false，如果用户采用位图的话，则把当前的默认 svg 都清空掉， 用户通过 css background 来自己设置图片\n      * icon: full / small \b图标， 支持 svg 图\n      * event: 绑定 dom 事件， this 指向这个插件， \b通过 this.$dom 可以拿到 dom \b节点\n      * 注意： icon bitmap 都是配置图的。 bitmap 优先。其次 icon\n\n    配置 🌰\n\n    ```javascirpt\n    {\n      // 可以传两个 icon 来切换播放暂停状态\n      icon: {\n        full: \'\',\n        small: \'\'\n      },\n\n      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom\n      event: {\n        click () {\n          console.log(\'\');\n        }\n      }\n    }\n    ```\n\n  * clarity\n    * 类型： Object\n    * \b含义： 切换清晰度组件\n    * 默认： {}\n    * 可配置参数\n      * list: []\n      * \n    * 注意空数组时不展示\n\n    配置 🌰\n\n    ```javascirpt\n    {\n      list: [\n        {name: \'标清\', src:\'\'},\n        {name: \'高清\', src: \'\'},\n        {name: \'原画\', src: \'\'}\n      ],\n      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom\n      event: {\n        click () {\n          console.log(\'\');\n        }\n      }\n    }\n    ```\n  \n  * 自定义组件\n    * 类型： Object\n    * 含义： 自定义组件\n    * 可配置属性：\n      * tag: 自定义标签名\n      * html: 自定义标签中的 html 内容\n      * event: 绑定 dom 事件， this 指向这个插件， \b通过 this.$dom 可以拿到 dom \b节点\n    * 注意： css 写在自己项目中就好了\n\n    配置 🌰\n\n    ```javascirpt\n    {\n      tag: \'\',\n      html: ``,\n      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom\n      event: {\n        click () {\n          console.log(\'\');\n        }\n      }\n    }\n    ```\n\n##### 组件相关问题\n\n* Q: 子组件的默认顺序是什么？\n\n  A: \b在 children 没有配置的情况下会采用下面的顺序\n    * 直播： play, progressTime, volume, screen\n    * 点播： play, progressTime, progressTime, volume, screen\n\n* Q: 我可以控制顺序吗？\n\n  A: 在 children 对象中，属性的书写顺序\b就是渲染\b顺序\n\n* Q: 为什么我配置\b了一个组件后，其他默认组件就都不存在了？\n\n  A: \b假如 children 配置后， 会读 children 的属性，并渲染， 不会\b补充其他\b组件，所以，需要你把所有的组件都写.\n\n\n## 最后\n\n欢迎各位大佬使用。有什么问题／建议，随时提。',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '1b4bfc74b84598af28ec7f0ef170dce4819a544a',
+21 silly publish   _id: 'chimee-plugin-controlbar@0.2.6',
+21 silly publish   _shasum: '7a5264aebc996d391d5b719e37ed9d039a5cca36',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name chimee-plugin-controlbar
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry http://registry.npm.qiwoo.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'chimee-plugin-controlbar',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'chimee-plugin-controlbar',
+26 silly mapToRegistry   name: 'chimee-plugin-controlbar',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri http://registry.npm.qiwoo.org/chimee-plugin-controlbar
+28 verbose publish registryBase http://registry.npm.qiwoo.org/
+29 silly publish uploading /Users/yandeqiang/.qnpm/chimee-plugin-controlbar/0.2.6/package.tgz
+30 verbose request uri http://registry.npm.qiwoo.org/chimee-plugin-controlbar
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 09:46:33
+33 verbose request using bearer token for auth
+34 verbose request id 5c8e15edc85eb397
+35 http request PUT http://registry.npm.qiwoo.org/chimee-plugin-controlbar
+36 http 403 http://registry.npm.qiwoo.org/chimee-plugin-controlbar
+37 verbose headers { server: 'nginx/1.6.3',
+37 verbose headers   date: 'Tue, 07 Nov 2017 01:46:36 GMT',
+37 verbose headers   'content-type': 'application/json; charset=utf-8',
+37 verbose headers   'content-length': '75',
+37 verbose headers   connection: 'close',
+37 verbose headers   vary: 'Accept-Encoding',
+37 verbose headers   'x-readtime': '62' }
+38 verbose request invalidating /Users/yandeqiang/.qnpm/registry.npm.qiwoo.org/chimee-plugin-controlbar on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: no_perms only allow publish with @q, @qiwoo scope(s): chimee-plugin-controlbar
+40 verbose stack     at makeError (/usr/local/lib/node_modules/@q/qnpm/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/@q/qnpm/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/@q/qnpm/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/@q/qnpm/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:125:13)
+40 verbose stack     at Request.emit (events.js:213:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/@q/qnpm/node_modules/npm/node_modules/request/request.js:1048:10)
+40 verbose stack     at emitOne (events.js:115:13)
+40 verbose stack     at Request.emit (events.js:210:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/@q/qnpm/node_modules/npm/node_modules/request/request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid chimee-plugin-controlbar
+43 verbose cwd /Users/yandeqiang/Desktop/git/chimee-plugin-controlbar
+44 error Darwin 16.7.0
+45 error argv "/usr/local/bin/node" "/usr/local/lib/node_modules/@q/qnpm/node_modules/.bin/npm" "--userconfig=/Users/yandeqiang/.qnpmrc" "--disturl=https://npm.taobao.org/mirrors/node" "--cache=/Users/yandeqiang/.qnpm" "--registry=http://registry.npm.qiwoo.org" "--node-gyp=/usr/local/lib/node_modules/@q/qnpm/node_modules/node-gyp/bin/node-gyp.js" "publish"
+46 error node v8.4.0
+47 error npm  v3.10.10
+48 error code E403
+49 error no_perms only allow publish with @q, @qiwoo scope(s): chimee-plugin-controlbar
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

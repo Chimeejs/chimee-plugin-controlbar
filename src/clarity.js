@@ -90,7 +90,6 @@ export default class Clarity extends Base {
     }).catch((e) => {
 
     });
-    this.mouseleave();
   }
 
 }
