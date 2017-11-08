@@ -23,7 +23,7 @@ const player = new chimee({
   // ...
   // 使用插件
   plugin: [
-    chimeePluginControlbar.name
+    chimeePluginControlbar.name // 或者 'chimeeControl'
   ]
 });
 ```
