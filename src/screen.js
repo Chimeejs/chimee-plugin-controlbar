@@ -87,7 +87,7 @@ export default class Screen extends Base {
       full = false;
     }
     this.changeState(this.state);
-    this.parent.$fullScreen(full, 'container');
+    this.parent.$fullscreen(full, 'container');
     if(full) {
       this.watch_screen = this.parent.$watch('isFullscreen', this.screenChange);
     }else{
@@ -96,9 +96,9 @@ export default class Screen extends Base {
   }
   @autobind
   screenChange () {
-    if(!this.parent.fullScreenElement) return;
+    if(!this.parent.fullscreenElement) return;
     this.state = 'small';
     this.changeState('small');
-    this.parent.$fullScreen(false, 'container');
+    this.parent.$fullscreen(false, 'container');
   }
 }
