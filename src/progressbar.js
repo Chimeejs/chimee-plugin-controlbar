@@ -53,10 +53,6 @@ export default class ProgressBar extends Base {
       //   top: this.$ball[0].offsetHeight + 'px'
       // })
       setStyle(this.parent.$wrap, 'paddingTop', this.$ball[0].offsetHeight + 'px');
-
-    this.watch_screen = this.parent.$watch('isFullScreen', () => {
-      this.update();
-    });
   }
     this.addWrapEvent();
   }

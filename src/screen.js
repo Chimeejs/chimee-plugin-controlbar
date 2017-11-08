@@ -89,7 +89,7 @@ export default class Screen extends Base {
     this.changeState(this.state);
     this.parent.$fullScreen(full, 'container');
     if(full) {
-      this.watch_screen = this.parent.$watch('isFullScreen', this.screenChange);
+      this.watch_screen = this.parent.$watch('isFullscreen', this.screenChange);
     }else{
       this.watch_screen();
     }
