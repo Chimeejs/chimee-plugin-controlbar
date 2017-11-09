@@ -1,6 +1,6 @@
+import './control.css';
 import {accessor, applyDecorators} from 'toxic-decorators';
 import {isObject, deepAssign, setStyle} from 'chimee-helper';
-import './control.css';
 import {createChild} from './createchild.js';
 
 const majorColorStyle = `

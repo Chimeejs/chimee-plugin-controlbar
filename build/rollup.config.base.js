@@ -69,9 +69,9 @@ const babelConfig = {
 };
 const externalRegExp = new RegExp(Object.keys(dependencies).join('|'));
 export default function (modeConf) {
-  const mode = modeConf.format;
+  const mode = modeConf.output.format;
   const config = {
-    entry: 'src/index.js',
+    input: 'src/index.js',
     banner,
     external (id) {
       return !/min|umd|iife/.test(mode) && externalRegExp.test(id);
@@ -95,7 +95,7 @@ export default function (modeConf) {
   delete modeConf.uglify;
   Object.assign(config, modeConf);
   if(mode === 'umd') {
-    config.moduleName = camelize(name);
+    config.name = camelize(name);
   }
   return config;
 };
