@@ -38,16 +38,19 @@ const chimeeControl = {
   name: 'chimeeControl',
   el: 'chimee-control',
   data: {
-    children: {}
+    children: {},
+    show: false,
+    disabled: true
   },
   level: 99,
   operable: false,
   penetrate: false,
   create () {},
   init (videoConfig) {
-    if(videoConfig.controls === false) return;
-    this.show = true;
-    videoConfig.controls = false;
+    if(videoConfig.controls) {
+      this.show = true;
+      videoConfig.controls = false;
+    }
     const _this = this;
     applyDecorators(videoConfig, {
       controls: accessor({
@@ -211,6 +214,7 @@ const chimeeControl = {
     // controlbar 不可以点
     // 键盘／鼠标事件不监听
     _disable (disabled) {
+      if(!this.show) return;
       this.disabled = disabled;
       setStyle(this.$wrap, 'pointerEvents', disabled ? 'none' : 'auto');
     },
