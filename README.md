@@ -287,9 +287,12 @@ plugin: [{
 * Q: 子组件的默认顺序是什么？
 
   A: 在 children 没有配置的情况下会采用下面的顺序
-    * 根据 chimee 的参数 isLive 来判断是否是直播或者点播
+  
+    * 注意：根据 chimee 的参数 isLive 来判断是否是直播还是点播
+    
     * 直播： play, progressTime, volume, screen
-    * 点播： play, progressTime, progressTime, volume, screen
+    
+    * 点播： play, progressTime, progressTime, volume, screen
 
 * Q: 我可以控制顺序吗？
 
