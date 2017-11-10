@@ -1,4 +1,4 @@
-import {$} from 'chimee-helper';
+import {addClassName} from 'chimee-helper';
 import Base from './base.js';
 
 /**
@@ -14,7 +14,6 @@ export default class Component extends Base {
 
   init () {
     super.create();
-    this.$dom = $(this.$dom);
-    $.addClass(this.$dom, 'chimee-flex-component');
+    addClassName(this.$dom, 'chimee-flex-component');
   }
 }

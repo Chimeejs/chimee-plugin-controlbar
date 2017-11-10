@@ -4,7 +4,7 @@ import {isObject, deepAssign, setStyle} from 'chimee-helper';
 import {createChild} from './createchild.js';
 
 const majorColorStyle = `
-  .chimee-flex-component svg g{
+  .chimee-flex-component svg *{
     fill: majorColor;
     stroke: majorColor;
   }
@@ -21,7 +21,7 @@ const majorColorStyle = `
 `;
 
 const hoverColorStyle = `
-  .chimee-flex-component svg:hover g{
+  .chimee-flex-component svg:hover *{
     fill: hoverColor;
     stroke: hoverColor;
   }
