@@ -83,9 +83,7 @@ export default class Clarity extends Base {
       increment: 1,
       immediate: true
     };
-    const currentTime = this.parent.currentTime;
     this.parent.$silentLoad(url, this.loadOption).then(() => {
-      // this.parent.currentTime = currentTime;
       this.loadOption = undefined;
     }).catch((e) => {
 
