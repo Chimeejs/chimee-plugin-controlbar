@@ -23,7 +23,8 @@ const defaultOption = {
   `,
   defaultEvent: {
     click: 'click'
-  }
+  },
+  duration: 3
 };
 
 export default class Clarity extends Base {
@@ -63,13 +64,17 @@ export default class Clarity extends Base {
   click (e) {
     const elem = e.target;
     if(elem.tagName === 'LI') {
-      Array.from(elem.parentElement.children).map(item => {
-        removeClassName(item, 'active');
-      });
       const url = elem.getAttribute('data-url') || '';
-      addClassName(e.target, 'active');
-      this.$text.text(e.target.textContent);
-      this.switchClarity(url);
+      this.switchClarity(url).then(() => {
+        this.loadOption = undefined;
+        Array.from(elem.parentElement.children).map(item => {
+          removeClassName(item, 'active');
+        });
+        addClassName(e.target, 'active');
+        this.$text.text(e.target.textContent);
+      }).catch((e) => {
+        console.warn(e);
+      });;
     }
   }
 
@@ -78,16 +83,11 @@ export default class Clarity extends Base {
       this.loadOption.abort = true;
     }
     this.loadOption = {
-      abort: false,
+      duration: this.option.duration,
       repeatTimes: 3,
-      increment: 1,
       immediate: true
     };
-    this.parent.$silentLoad(url, this.loadOption).then(() => {
-      this.loadOption = undefined;
-    }).catch((e) => {
-
-    });
+    return this.parent.$silentLoad(url, this.loadOption)
   }
 
 }

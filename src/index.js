@@ -32,6 +32,8 @@ const hoverColorStyle = `
  */
 
 const defaultConfig = {
+  hideBarTime: 2000, // hidebar 延迟时间， barShowByMouse 为 move 时有效，enter 时为0， 用户设置无效
+  barShowByMouse: 'move', // 控制条显示由， move 还是 enter/leave 来控制显示／隐藏
 };
 
 const chimeeControl = {
@@ -65,6 +67,8 @@ const chimeeControl = {
       }, {preSet: true})
     }, {self: true});
     this.config = isObject(this.$config) ? deepAssign(defaultConfig, this.$config) : defaultConfig;
+
+    this.config.hideBarTime = this.config.barShowByMouse === 'move' ? this.config.hideBarTime : 0;
     this.$dom.innerHTML = '<chimee-control-wrap></chimee-control-wrap>';
     this.$wrap = this.$dom.querySelector('chimee-control-wrap');
     this.children = createChild(this);
@@ -87,19 +91,22 @@ const chimeeControl = {
     },
     play () {
       this.children.play && this.children.play.changeState('play');
-      this._hideItself();
+      this.config.barShowByMouse === 'move' && this._hideItself();
     },
     pause () {
       this.children.play && this.children.play.changeState('pause');
       this._showItself();
     },
-    load () {
-    },
-    c_touchmove () {
-      this._mousemove();
+    c_mouseenter () {
+      if(this.config.barShowByMouse === 'move') return;
+      this._showItself();
     },
     c_mousemove () {
       this._mousemove();
+    },
+    c_mouseleave () {
+      if(this.config.barShowByMouse === 'move') return;
+      this._hideItself();
     },
     durationchange () {
       this.children.progressTime && this.children.progressTime.updateTotal();
@@ -152,9 +159,6 @@ const chimeeControl = {
         }
       }
     },
-    touchstart (e) {
-      !this.disabled && this.children.play && this.children.play.click(e);
-    },
     click (e) {
       const time = new Date();
       const preTime = this.clickTime;
@@ -189,7 +193,7 @@ const chimeeControl = {
         setStyle(this.$dom, {
           visibility: 'hidden'
         });
-      }, 2000);
+      }, this.config.hideBarTime);
     },
     _showItself () {
       window.clearTimeout(this.timeId);
@@ -207,7 +211,7 @@ const chimeeControl = {
       });
     },
     _mousemove (e) {
-      if(this.paused) return;
+      if(this.paused || this.config.barShowByMouse === 'enter') return;
       this._showItself();
       this._hideItself();
     },

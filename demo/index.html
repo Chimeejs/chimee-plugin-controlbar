@@ -97,6 +97,8 @@
           name: chimeePluginControlbar.name,
           majorColor: '#f00',
           hoverColor: '#fff',
+          hideBarTime: 1000,
+          barShowByMouse: 'move', // 控制条显示由， move 还是 enter/leave 来控制显示／隐藏
           children: {
             play: {
               // bitmap: true,
@@ -151,7 +153,8 @@
                 {name: '标清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_368b70a5d4f-c5cc-42ff-b442-004168fc86a3.mp4'},
                 {name: '高清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_369ed890f51-1c38-42a7-9ce2-828492660c60.mp4'},
                 {name: '原画', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4'}
-              ]
+              ],
+              duration: 5
             },
             screen: {
               icon: {
