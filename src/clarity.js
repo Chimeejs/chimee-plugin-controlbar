@@ -87,7 +87,7 @@ export default class Clarity extends Base {
       repeatTimes: 3,
       immediate: true
     };
-    return this.parent.$silentLoad(url, this.loadOption)
+    return this.parent.$silentLoad(url, this.loadOption);
   }
 
 }
