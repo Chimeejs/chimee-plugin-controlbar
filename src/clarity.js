@@ -24,7 +24,8 @@ const defaultOption = {
   defaultEvent: {
     click: 'click'
   },
-  duration: 3
+  duration: 10,
+  increment: 1
 };
 
 export default class Clarity extends Base {
@@ -85,7 +86,8 @@ export default class Clarity extends Base {
     this.loadOption = {
       duration: this.option.duration,
       repeatTimes: 3,
-      immediate: true
+      immediate: true,
+      increment: this.option.increment
     };
     return this.parent.$silentLoad(url, this.loadOption);
   }

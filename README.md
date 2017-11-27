@@ -237,7 +237,8 @@ plugin: [{
     * 默认： {}
     * 可配置参数
       * list: []
-      * duraion: Number 默认 3 秒， 单位 ： 秒， [chimee duration 定义](https://github.com/chimeejs/chimee/blob/master/doc/zh-cn/plugin-api.md#-silentload)
+      * duraion: Number 默认 10 秒， 单位 ： 秒， [chimee duration 定义](https://github.com/chimeejs/chimee/blob/master/doc/zh-cn/plugin-api.md#-silentload)
+      * increment: Number 默认 0 秒， 单位 ： 秒， [chimee duration 定义](https://github.com/chimeejs/chimee/blob/master/doc/zh-cn/plugin-api.md#-silentload)
     * 注意空数组时不展示
 
     配置 🌰
