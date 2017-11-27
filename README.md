@@ -257,6 +257,10 @@ plugin: [{
       }
     }
     ```
+
+    直播切流测试： http://chimee.org/demo/live-clarity.html
+
+    点播切流测试： http://chimee.org/demo/clarity.html
   
   * 自定义组件
     * 类型： Object
