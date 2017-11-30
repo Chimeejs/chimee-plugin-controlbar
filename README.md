@@ -298,6 +298,8 @@ plugin: [{
     * 直播： play, progressTime, volume, screen
     
     * 点播： play, progressTime, progressTime, volume, screen
+    
+    * 如果用户配置了， 则按照用户的配置走，不论是否是直播还是点播
 
 * Q: 我可以控制顺序吗？
 
