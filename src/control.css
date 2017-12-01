@@ -152,7 +152,7 @@ chimee-progressbar.progressbar-layout-top {
   & chimee-progressbar-wrap {
     top: -1.6em;
     height: 1.6em;
-    left: 0.8em;
+    left: 0;
     right: 0;
   }
 
@@ -181,7 +181,6 @@ chimee-progressbar-buffer {
 }
 
 chimee-progressbar-all {
-  margin-left: -0.8em;
   background: var(--barColor);
 }
 

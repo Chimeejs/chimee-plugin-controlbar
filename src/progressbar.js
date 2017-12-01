@@ -93,7 +93,7 @@ export default class ProgressBar extends Base {
     const time = this._currentTime !== undefined ? this._currentTime : this.parent.currentTime;
     const timePer = time ? time / this.parent.duration : 0;
     // const timeWidth = timePer * allWidth;
-    this.$all.css('width', timePer * 100 + '%');
+    this.$all.css('width', `calc(${timePer * 100}% - ${this.$ball[0].offsetWidth / 2}px`);
   }
   @autobind
   mousedown (e) {
