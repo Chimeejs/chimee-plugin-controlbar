@@ -146,10 +146,10 @@ plugin: [{
     ```
 
   * progressBar
-    * 类型： Object
+    * 类型： Object | false
     * 含义： 进度条控制组件
-    * 默认： {}
-    * 可配置属性：
+    * 默认： {}, 属性值为 false 的时候，表示，他是一个占位符，不现实，可以区分左右，目前只有 progressbar 有这个功能
+    * 可配置属性：
       * layout: 有两种位置， 一是，居中布局。二是，位于整个控制条顶部。
         * 可选值： 'top' ／ 'baseline'(默认)
       * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
@@ -298,10 +298,14 @@ plugin: [{
     * 直播： play, progressTime, volume, screen
     
     * 点播： play, progressTime, progressTime, volume, screen
+    
+    * 如果用户配置了， 则按照用户的配置走，不论是否是直播还是点播
 
 * Q: 我可以控制顺序吗？
 
   A: 在 children 对象中，属性的书写顺序就是渲染顺序
+    
+    * 注意， progressbar 可以作为一个占位符存在
 
 * Q: 为什么我配置了一个组件后，其他默认组件就都不存在了？
 
