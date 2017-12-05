@@ -60,10 +60,6 @@ export default class Volume extends Base {
     this.init();
   }
 
-  inited () {
-    this.update();
-  }
-
   init () {
     super.create();
     this.$dom = $(this.$dom);
@@ -89,10 +85,23 @@ export default class Volume extends Base {
 
     this.$dom.addClass(`chimee-flex-component ${this.layout}`);
     this.changeState();
+
+    this.watch_muted = this.parent.$watch('muted', (val) => {
+      this.update();
+    });
+  }
+
+  inited () {
+    this.update();
+  }
+
+  destroy () {
+    this.watch_muted();
+    super.destroy();
   }
 
   changeState () {
-    if(this.parent.volume === 0) {
+    if(this.parent.muted || this.parent.volume === 0) {
       this.state = 'mute';
     }else if(this.parent.volume > 0 && this.parent.volume <= 0.5) {
       this.state = 'low';
@@ -116,6 +125,10 @@ export default class Volume extends Base {
   }
 
   stateClick () {
+    if(this.parent.muted) {
+      this.parent.muted = false;
+      return;
+    }
     const currentVolume = this.parent.volume;
     this.parent.volume = currentVolume === 0 ? this.parent.preVolume : 0;
     this.parent.preVolume = currentVolume;
@@ -144,8 +157,8 @@ export default class Volume extends Base {
    */
   update () {
     this.changeState();
-    this.layout === 'vertical' ? this.$all.css('height', `${this.parent.volume * 100}%`) : this.$all.css('width', `${this.parent.volume * 100}%`);;
-
+    const volume = this.parent.muted ? 0 : this.parent.volume;
+    this.layout === 'vertical' ? this.$all.css('height', `${volume * 100}%`) : this.$all.css('width', `${volume * 100}%`);
   }
 
   /**
@@ -158,6 +171,7 @@ export default class Volume extends Base {
     const dragVolume = this.layout === 'vertical' ? (this.startX - this.endX) / this.$bg[0].offsetHeight : (this.endX - this.startX) / this.$bg[0].offsetWidth;
     const dragAfterVolume = +(this.startVolume + dragVolume).toFixed(2);
     this.parent.volume = dragAfterVolume < 0 ? 0 : dragAfterVolume > 1 ? 1 : dragAfterVolume;
+    this.parent.muted = false;
   }
 
   /**
