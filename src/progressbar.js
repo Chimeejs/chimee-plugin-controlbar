@@ -129,6 +129,7 @@ export default class ProgressBar extends Base {
    */
   @autobind
   dragEnd () {
+    this.update();
     this.startX = 0;
     this.startTime = 0;
     // if(!this.inBall) {
