@@ -34,8 +34,6 @@
   "homepage": "https://github.com/Chimeejs/chimee-plugin-controlbar#readme",
   "dependencies": {
     "chimee-helper": "^0.2.6",
-    "rollup-plugin-replace": "^2.0.0",
-    "stylelint-config-standard": "^17.0.0",
     "toxic-decorators": "^0.3.8"
   },
   "devDependencies": {
@@ -57,6 +55,8 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-postcss": "^0.5.5",
     "rollup-plugin-uglify": "^2.0.1",
+    "rollup-plugin-replace": "^2.0.0",
+    "stylelint-config-standard": "^17.0.0",
     "stylelint": "^8.2.0"
   }
 }
