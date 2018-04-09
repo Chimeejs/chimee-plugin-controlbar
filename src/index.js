@@ -49,6 +49,12 @@ const chimeeControl = {
   penetrate: false,
   create () {},
   init (videoConfig) {
+  },
+  destroy () {
+    window.clearTimeout(this.timeId);
+  },
+  inited () {
+    const videoConfig = this.$videoConfig;
     if(videoConfig.controls) {
       this.show = true;
       videoConfig.controls = false;
@@ -73,11 +79,7 @@ const chimeeControl = {
     this.$wrap = this.$dom.querySelector('chimee-control-wrap');
     this.children = createChild(this);
     this._setStyle();
-  },
-  destroy () {
-    window.clearTimeout(this.timeId);
-  },
-  inited () {
+
     for(const i in this.children) {
       this.children[i].inited && this.children[i].inited();
     }
