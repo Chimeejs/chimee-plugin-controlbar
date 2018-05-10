@@ -17,7 +17,9 @@ export default class Base {
 
   createEl () {
     this.$dom = document.createElement(this.option.tag);
-    this.$dom.innerHTML = this.option.html;
+    typeof this.option.html === 'string'
+      ? this.$dom.innerHTML = this.option.html
+      : this.$dom.appendChild(this.option.html);
     this.parent.$wrap.appendChild(this.$dom);
   }
 

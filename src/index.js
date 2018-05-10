@@ -14,6 +14,8 @@ const majorColorStyle = `
   chimee-volume.chimee-flex-component chimee-volume-bar-all{
     background: majorColor;    
   }
+  chimee-playbackrate-list li:hover,
+  chimee-playbackrate-list li.active,
   chimee-clarity-list li:hover,
   chimee-clarity-list li.active {
     color: majorColor;
@@ -33,7 +35,7 @@ const hoverColorStyle = `
 
 const defaultConfig = {
   hideBarTime: 2000, // hidebar 延迟时间， barShowByMouse 为 move 时有效，enter 时为0， 用户设置无效
-  barShowByMouse: 'move', // 控制条显示由， move 还是 enter/leave 来控制显示／隐藏
+  barShowByMouse: 'move', // 控制条显示由， move 还是 enter/leave 来控制显示／隐藏,
 };
 
 const chimeeControl = {
@@ -237,4 +239,3 @@ const chimeeControl = {
 };
 
 export default chimeeControl;
-

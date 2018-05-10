@@ -41,6 +41,7 @@ chimee-control-state-pause,
 chimee-control-state-play,
 chimee-progressbar-tip,
 chimee-screen-full,
+chimee-playbackrate-list,
 chimee-clarity-list,
 chimee-screen-small {
   display: none;
@@ -380,8 +381,9 @@ chimee-screen.chimee-flex-component {
   text-align: left;
 }
 
-/* 清晰度切换 */
-chimee-clarity.chimee-flex-component {
+/* 清晰度切换, 倍速切换 */
+chimee-clarity.chimee-flex-component,
+chimee-playbackrate.chimee-flex-component {
   position: relative;
   color: #fff;
   width: 6em;
@@ -394,15 +396,18 @@ chimee-clarity.chimee-flex-component {
   font-size: 16px;
 }
 
+chimee-playbackrate.chimee-flex-component:hover chimee-playbackrate-list,
 chimee-clarity.chimee-flex-component:hover chimee-clarity-list {
   display: inline-block;
 }
 
+chimee-playbackrate.chimee-flex-component svg,
 chimee-clarity.chimee-flex-component svg {
   width: auto;
   height: auto;
 }
 
+chimee-playbackrate-list,
 chimee-clarity-list {
   position: absolute;
   left: 0;
@@ -414,6 +419,7 @@ chimee-clarity-list {
   line-height: 0;
 }
 
+chimee-playbackrate-list ul,
 chimee-clarity-list ul {
   margin: 0;
   padding: 0.5em 0;
@@ -421,15 +427,19 @@ chimee-clarity-list ul {
   line-height: 2em;
 }
 
+chimee-playbackrate-list li,
 chimee-clarity-list li {
   list-style-type: none;
 }
 
+chimee-playbackrate-list li:hover,
+chimee-playbackrate-list li.active,
 chimee-clarity-list li:hover,
 chimee-clarity-list li.active {
   color: var(--barColor);
 }
 
+chimee-playbackrate-list-arrow,
 chimee-clarity-list-arrow {
   position: absolute;
   bottom: 1.5em;

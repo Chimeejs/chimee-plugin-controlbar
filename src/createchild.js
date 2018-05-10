@@ -5,6 +5,7 @@ import ProgressBar from './progressbar.js';
 import ProgressTime from './progresstime.js';
 import Screen from './screen.js';
 import Clarity from './clarity.js';
+import Playbackrate from './playbackrate.js';
 
 function hundleChildren (plugin) {
   let childConfig = {};
@@ -75,6 +76,11 @@ export function createChild (plugin) {
         case 'clarity':
           if(childConfig.clarity && Array.isArray(childConfig.clarity.list)) {
             children.clarity = new Clarity(plugin, childConfig.clarity);
+          }
+          break;
+        case 'playbackrate':
+          if(childConfig.playbackrate && Array.isArray(childConfig.playbackrate.list)) {
+            children.playbackrate = new Playbackrate(plugin, childConfig.playbackrate);
           }
           break;
         default:
