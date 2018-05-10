@@ -81,7 +81,7 @@ plugin: [{
   * 类型： Object
   * 含义： 配置子组件是否展示／展示方式，还可以自己扩展子组件
   * 非必需
-  * 目前支持的组件： play, progressTime, progressBar, volume, screen, clarity
+  * 目前支持的组件： play, progressTime, progressBar, volume, screen, clarity, playbackrate
   
 ##### 目前支持的组件及配置
 
@@ -263,6 +263,34 @@ plugin: [{
 
     点播切流测试： http://chimee.org/demo/clarity.html
   
+  * playbackrate
+    * 类型： Object
+    * 含义： 切换播放倍速组件
+    * 默认： {}
+    * 可配置参数
+      * list: []
+        * defualt: 默认播放速率 boolean值
+    * 注意空数组时不展示
+
+    配置 🌰
+
+    ```javascirpt
+    {
+      // default 通过设置 default 来标明当前播放速率
+      list: [
+        {name: '0.5倍速', value: 0.5},
+        {name: '1倍速', value: 1, default: true},
+        {name: '2倍速', value: 2}
+      ],
+      // 可以指定 event 来绑定一些事件，默认 this 是该插件，而不是 dom
+      event: {
+        click () {
+          console.log('');
+        }
+      }
+    }
+    ```
+
   * 自定义组件
     * 类型： Object
     * 含义： 自定义组件

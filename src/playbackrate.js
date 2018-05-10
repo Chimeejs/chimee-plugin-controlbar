@@ -48,11 +48,15 @@ export default class Playbackrate extends Base {
   }
 
   initTextList () {
-    this.option.list.forEach(item => {
+    const length = this.option.list.length;
+    let hasRenderDefault = false;
+    this.option.list.forEach((item, i) => {
       const li = $(document.createElement('li'));
       li.attr('data-value', item.value);
       li.text(item.name);
-      if(item.default) {
+      if(item.default || (!hasRenderDefault && i === length - 1)) {
+        hasRenderDefault = true;
+        item.default && console.warn('播放速率列表需要给每项配置 `default(boolean)` 来标明是否是默认播放速率');
         this.$text.text(item.name);
         li.addClass('active');
         this.switchPlaybackrate(item.value);
@@ -71,7 +75,7 @@ export default class Playbackrate extends Base {
       });
       addClassName(e.target, 'active');
       this.$text.text(e.target.textContent);
-      
+
     }
   }
 

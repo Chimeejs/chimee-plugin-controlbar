@@ -74,12 +74,12 @@ export function createChild (plugin) {
           }
           break;
         case 'clarity':
-          if(childConfig.clarity && Array.isArray(childConfig.clarity.list)) {
+          if(childConfig.clarity && Array.isArray(childConfig.clarity.list) && childConfig.clarity.list.length) {
             children.clarity = new Clarity(plugin, childConfig.clarity);
           }
           break;
         case 'playbackrate':
-          if(childConfig.playbackrate && Array.isArray(childConfig.playbackrate.list)) {
+          if(childConfig.playbackrate && Array.isArray(childConfig.playbackrate.list) && childConfig.playbackrate.list.length) {
             children.playbackrate = new Playbackrate(plugin, childConfig.playbackrate);
           }
           break;
