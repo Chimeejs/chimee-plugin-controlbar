@@ -159,10 +159,16 @@
               increment: 2
             },
             playbackrate: {
+              create() {
+                console.log(this);
+              },
+              destroy() {
+                console.log('destroy');
+              },
               list: [
                 {name: '0.5倍速', value: 0.5},
                 {name: '1倍速', value: 1, default: true},
-                {name: '2倍速', value: 2}
+                {name: '2倍速', value: 2 /*, default: true */}
               ]
             },
             screen: {

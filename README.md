@@ -90,6 +90,9 @@ plugin: [{
     * 含义： 配置播放暂停键 icon 及事件
     * 默认： {}
     * 可配置属性：
+      * 生命周期：
+        * create: 插入 dom 节点, 完成事件注册
+        * destroy
       * bitmap: true/ false 是否是位图，默认 false， 如果用户采用位图的话，则把当前的默认 svg 都清空掉， 用户通过 css background 来自己设置图片
       * icon: play / pause 图标， 支持 svg 图
       * animate: 当前是一个 svg path 动画，可以传 path 来实现你想要的动画
@@ -130,6 +133,9 @@ plugin: [{
     * 含义： 时间展示组件，用来展示播放时间／开播时间／视频总时长
     * 默认： {}
     * 可配置属性：
+      * 生命周期：
+        * create: 插入 dom 节点, 完成事件注册
+        * destroy
       * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
 
     配置 🌰
@@ -150,6 +156,9 @@ plugin: [{
     * 含义： 进度条控制组件
     * 默认： {}, 属性值为 false 的时候，表示，他是一个占位符，不现实，可以区分左右，目前只有 progressbar 有这个功能
     * 可配置属性：
+      * 生命周期：
+        * create: 插入 dom 节点, 完成事件注册
+        * destroy
       * layout: 有两种位置， 一是，居中布局。二是，位于整个控制条顶部。
         * 可选值： 'top' ／ 'baseline'(默认)
       * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
@@ -174,6 +183,9 @@ plugin: [{
     * 含义： 声音控制组件
     * 默认： {}
     * 可配置属性：
+      * 生命周期：
+        * create: 插入 dom 节点, 完成事件注册
+        * destroy
       * layout: 有两种位置， 一是，垂直。二是，水平。
         * 可选值： 'vertical' ／ 'horizonal'(默认)
       * bitmap: true/ false 是否是位图，默认 false，如果用户采用位图的话，则把当前的默认 svg 都清空掉， 用户通过 css background 来自己设置图片
@@ -207,6 +219,9 @@ plugin: [{
     * 含义： 配置全屏／非全屏 icon 及事件
     * 默认： {}
     * 可配置属性：
+      * 生命周期：
+        * create: 插入 dom 节点, 完成事件注册
+        * destroy
       * bitmap: true/ false 是否是位图，默认 false，如果用户采用位图的话，则把当前的默认 svg 都清空掉， 用户通过 css background 来自己设置图片
       * icon: full / small 图标， 支持 svg 图
       * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点
@@ -236,6 +251,9 @@ plugin: [{
     * 含义： 切换清晰度组件
     * 默认： {}
     * 可配置参数
+      * 生命周期：
+        * create: 插入 dom 节点, 完成事件注册
+        * destroy
       * list: []
       * duraion: Number 默认 10 秒， 单位 ： 秒， [chimee duration 定义](https://github.com/chimeejs/chimee/blob/master/doc/zh-cn/plugin-api.md#-silentload)
       * increment: Number 默认 0 秒， 单位 ： 秒， [chimee duration 定义](https://github.com/chimeejs/chimee/blob/master/doc/zh-cn/plugin-api.md#-silentload)
@@ -268,6 +286,9 @@ plugin: [{
     * 含义： 切换播放倍速组件
     * 默认： {}
     * 可配置参数
+      * 生命周期：
+        * create: 插入 dom 节点, 完成事件注册
+        * destroy
       * list: []
         * defualt: 默认播放速率 boolean值
     * 注意空数组时不展示
@@ -295,6 +316,9 @@ plugin: [{
     * 类型： Object
     * 含义： 自定义组件
     * 可配置属性：
+      * 生命周期：
+        * create: 插入 dom 节点, 完成事件注册
+        * destroy
       * tag: 自定义标签名
       * html: 自定义标签中的 html 内容
       * event: 绑定 dom 事件， this 指向这个插件， 通过 this.$dom 可以拿到 dom 节点

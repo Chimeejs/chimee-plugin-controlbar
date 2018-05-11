@@ -9,10 +9,12 @@ export default class Base {
   create () {
     this.createEl();
     this.addAllEvent();
+    this.option.create && this.option.create.apply(this);
   }
 
   destroy () {
     this.removeAllEvent();
+    this.option.destroy && this.option.destroy.apply(this);
   }
 
   createEl () {

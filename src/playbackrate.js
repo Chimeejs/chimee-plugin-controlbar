@@ -56,7 +56,7 @@ export default class Playbackrate extends Base {
       li.text(item.name);
       if(item.default || (!hasRenderDefault && i === length - 1)) {
         hasRenderDefault = true;
-        item.default && console.warn('播放速率列表需要给每项配置 `default(boolean)` 来标明是否是默认播放速率');
+        !item.default && console.warn('播放速率列表需要给每项配置 `default(boolean)` 来标明是否是默认播放速率');
         this.$text.text(item.name);
         li.addClass('active');
         this.switchPlaybackrate(item.value);
@@ -80,7 +80,9 @@ export default class Playbackrate extends Base {
   }
 
   switchPlaybackrate (rate) {
-    this.parent.playbackRate = rate;
+    setTimeout(_ => {
+      this.parent.playbackRate = rate;
+    }, 0);
   }
 
 }
