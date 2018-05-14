@@ -255,9 +255,33 @@ plugin: [{
         * create: 插入 dom 节点, 完成事件注册
         * destroy
       * list: []
-      * duraion: Number 默认 10 秒， 单位 ： 秒， [chimee duration 定义](https://github.com/chimeejs/chimee/blob/master/doc/zh-cn/plugin-api.md#-silentload)
-      * increment: Number 默认 0 秒， 单位 ： 秒， [chimee duration 定义](https://github.com/chimeejs/chimee/blob/master/doc/zh-cn/plugin-api.md#-silentload)
-    * 注意空数组时不展示
+      * duration
+        * 类型：`number`
+        * 默认：3
+        * 单次视频加载的时长
+        * 若在规定的时间段内加载不成功，则放弃此次任务。
+        * 单位为秒，对应于主视频的播放时间，也就是说若主视频暂停播放，则时间停滞，但加载仍继续。
+      * bias
+        * 类型：`number`
+        * 默认：0
+        * 偏差区间，单位为秒
+        * 若该值小于等于0，则在主视频播放到或超过约定时间点直接切换，若新视频加载失败，则放弃此次切换。
+        * 若该值大于0，则当主视频播放到约定时间偏差区间里，一旦视频加载成功就切换。若超出偏差空间，则放弃此次切换。
+      * repeatTimes
+        * 类型：`number`
+        * 默认：0
+        * 重复次数
+        * 若加载视频失败，则自动重新加载，直至重复次数耗尽。默认不重复加载。
+      * increment
+        * 类型：`number`
+        * 默认：0
+        * 每次重复时递增的时间，单位为秒
+        * 一般而言加载失败都是因为超时加载失败，故每次重复的时候应相应延长加载时间。每次重复加载都会相应叠加该值对应的时间。
+      * immediate
+        * 类型：`Object`
+        * 默认：`false`
+        * 新视频加载成功后是否立即切换无需等待到约定时间。
+        * 注意空数组时不展示
 
     配置 🌰
 
