@@ -1,6 +1,7 @@
  <!DOCTYPE html> 
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>test</title>
     <style>
       #wrap{
@@ -27,7 +28,7 @@
   <script src="../lib/index.browser.js"></script>
   <script>
     Chimee.install(chimeePluginControlbar);
-    const player = new Chimee({
+    var player = new Chimee({
       wrapper: '#wrap',
       src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4',
       playbackRate: 0.5,
@@ -140,15 +141,15 @@
               // },
               // layout: 'vertical'
             },
-            danmu: {
-              tag: 'chimee-danmu',
-              html: `开启`,
-              event: {
-                click() {
-                  console.log(this)
-                }
-              }
-            },
+            // danmu: {
+            //   tag: 'chimee-danmu',
+            //   html: `开启`,
+            //   event: {
+            //     click() {
+            //       console.log(this)
+            //     }
+            //   }
+            // },
             clarity: {
               list: [
                 {name: '标清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_368b70a5d4f-c5cc-42ff-b442-004168fc86a3.mp4'},
@@ -158,66 +159,66 @@
               duration: 3,
               increment: 0
             },
-            playbackrate: {
-              create() {
-                console.log(this);
-              },
-              destroy() {
-                console.log('destroy');
-              },
-              list: [
-                {name: '0.5倍速', value: 0.5},
-                {name: '1倍速', value: 1, default: true},
-                {name: '2倍速', value: 2 /*, default: true */}
-              ]
-            },
-            screen: {
-              icon: {
-                full: `
-                  <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
-                    <title>全屏</title>
-                    <desc>Created with Sketch.</desc>
-                    <defs></defs>
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g id="live_btn_fullscreen_selected" transform="translate(-2.000000, -2.000000)">
-                            <g id="全屏">
-                                <rect id="Rectangle-14-Copy" fill="#D8D8D8" opacity="0" x="0" y="0" width="22" height="22"></rect>
-                                <path d="M14,3 L18.9342324,3 C18.9708625,3 19,3.02912298 19,3.06490265 L19,8 M19,14 L19,18.9348371 C19,18.9707602 18.9710839,19 18.9347323,19 L14,19 M8,19 L3.06435644,19 C3.02887789,19 3,18.9709592 3,18.9352805 L3,14 M3,8 L3,3.06482713 C3,3.0290891 3.02940188,3 3.06552419,3 L8,3" id="Page-1" stroke-width="2" stroke="#ff00ee"></path>
-                            </g>
-                        </g>
-                    </g>
-                </svg>`,
-                small: `
-                  <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                      <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
-                      <title>全屏</title>
-                      <desc>Created with Sketch.</desc>
-                      <defs></defs>
-                      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                          <g id="live_btn_fullscreen_selected" transform="translate(-2.000000, -2.000000)">
-                              <g id="全屏">
-                                  <rect id="Rectangle-14-Copy" fill="#D8D8D8" opacity="0" x="0" y="0" width="22" height="22"></rect>
-                                  <path d="M14,3 L18.9342324,3 C18.9708625,3 19,3.02912298 19,3.06490265 L19,8 M19,14 L19,18.9348371 C19,18.9707602 18.9710839,19 18.9347323,19 L14,19 M8,19 L3.06435644,19 C3.02887789,19 3,18.9709592 3,18.9352805 L3,14 M3,8 L3,3.06482713 C3,3.0290891 3.02940188,3 3.06552419,3 L8,3" id="Page-1" stroke-width="2"></path>
-                              </g>
-                          </g>
-                      </g>
-                  </svg>
-                `
-              },
-              event: {
-                click() {
-                  alert(1)
-                }
-              },           
-            }
+            // playbackrate: {
+            //   create() {
+            //     console.log(this);
+            //   },
+            //   destroy() {
+            //     console.log('destroy');
+            //   },
+            //   list: [
+            //     {name: '0.5倍速', value: 0.5},
+            //     {name: '1倍速', value: 1, default: true},
+            //     {name: '2倍速', value: 2 /*, default: true */}
+            //   ]
+            // },
+            // screen: {
+            //   icon: {
+            //     full: `
+            //       <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            //         <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+            //         <title>全屏</title>
+            //         <desc>Created with Sketch.</desc>
+            //         <defs></defs>
+            //         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            //             <g id="live_btn_fullscreen_selected" transform="translate(-2.000000, -2.000000)">
+            //                 <g id="全屏">
+            //                     <rect id="Rectangle-14-Copy" fill="#D8D8D8" opacity="0" x="0" y="0" width="22" height="22"></rect>
+            //                     <path d="M14,3 L18.9342324,3 C18.9708625,3 19,3.02912298 19,3.06490265 L19,8 M19,14 L19,18.9348371 C19,18.9707602 18.9710839,19 18.9347323,19 L14,19 M8,19 L3.06435644,19 C3.02887789,19 3,18.9709592 3,18.9352805 L3,14 M3,8 L3,3.06482713 C3,3.0290891 3.02940188,3 3.06552419,3 L8,3" id="Page-1" stroke-width="2" stroke="#ff00ee"></path>
+            //                 </g>
+            //             </g>
+            //         </g>
+            //     </svg>`,
+            //     small: `
+            //       <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            //           <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+            //           <title>全屏</title>
+            //           <desc>Created with Sketch.</desc>
+            //           <defs></defs>
+            //           <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            //               <g id="live_btn_fullscreen_selected" transform="translate(-2.000000, -2.000000)">
+            //                   <g id="全屏">
+            //                       <rect id="Rectangle-14-Copy" fill="#D8D8D8" opacity="0" x="0" y="0" width="22" height="22"></rect>
+            //                       <path d="M14,3 L18.9342324,3 C18.9708625,3 19,3.02912298 19,3.06490265 L19,8 M19,14 L19,18.9348371 C19,18.9707602 18.9710839,19 18.9347323,19 L14,19 M8,19 L3.06435644,19 C3.02887789,19 3,18.9709592 3,18.9352805 L3,14 M3,8 L3,3.06482713 C3,3.0290891 3.02940188,3 3.06552419,3 L8,3" id="Page-1" stroke-width="2"></path>
+            //                   </g>
+            //               </g>
+            //           </g>
+            //       </svg>
+            //     `
+            //   },
+            //   event: {
+            //     click() {
+            //       alert(1)
+            //     }
+            //   },           
+            // }
           }
         }
       ],
       controls: true,
       autoplay: true
     });
-    // const player2 = new Chimee({
+    // var player2 = new Chimee({
     //   wrapper: '#wrap2',
     //   src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4',
     //   playbackRate: 0.5,
@@ -395,12 +396,12 @@
     //   autoplay: true
     // });
 
-    // const player3 = new Chimee({
+    // var player3 = new Chimee({
     //   wrapper: '#wrap2',
     //   src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4',
     // });
     // player3.use(chimeePluginControlbar.name);
-    // const player4 = new Chimee({
+    // var player4 = new Chimee({
     //   wrapper: '#wrap',
     //   src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4',
     // });
