@@ -162,4 +162,8 @@ export default class ProgressBar extends Base {
   tipEnd () {
     this.$tip.css('display', 'none');
   }
+
+  changePointerEvent () {
+    this.$wrap.css('pointerEvents', 'auto');
+  }
 }

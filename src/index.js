@@ -4,16 +4,19 @@ import {isObject, deepAssign, setStyle} from 'chimee-helper';
 import {createChild} from './createchild.js';
 
 const majorColorStyle = `
-  .chimee-flex-component svg *{
+  .chimee-flex-component svg * {
     fill: majorColor;
     stroke: majorColor;
   }
-  chimee-progressbar-all{
+
+  chimee-progressbar-all {
     background: majorColor;
   }
-  chimee-volume.chimee-flex-component chimee-volume-bar-all{
-    background: majorColor;    
+
+  chimee-volume.chimee-flex-component chimee-volume-bar-all {
+    background: majorColor;
   }
+
   chimee-playbackrate-list li:hover,
   chimee-playbackrate-list li.active,
   chimee-clarity-list li:hover,
@@ -114,6 +117,7 @@ const chimeeControl = {
     },
     durationchange () {
       this.children.progressTime && this.children.progressTime.updateTotal();
+      this.children.progressBar && this.children.progressBar.changePointerEvent();
     },
     timeupdate () {
       this._progressUpdate();
@@ -125,7 +129,7 @@ const chimeeControl = {
       this.children.volume && this.children.volume.update();
     },
     keydown (e) {
-      if(this.disabled) return;
+      // if(this.disabled) return;
       e.stopPropagation();
       switch (e.keyCode) {
         case 32: {
@@ -224,7 +228,7 @@ const chimeeControl = {
     _disable (disabled) {
       if(!this.show) return;
       this.disabled = disabled;
-      setStyle(this.$wrap, 'pointerEvents', disabled ? 'none' : 'auto');
+      // setStyle(this.$wrap, 'pointerEvents', disabled ? 'none' : 'auto');
     },
     _setStyle () {
       let css = '';

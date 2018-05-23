@@ -145,6 +145,7 @@ chimee-progressbar-wrap {
   left: 1em;
   right: 1em;
   top: 0;
+  pointer-events: none;
 }
 
 chimee-progressbar.progressbar-layout-top {

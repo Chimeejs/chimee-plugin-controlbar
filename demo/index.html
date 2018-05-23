@@ -159,19 +159,19 @@
               duration: 3,
               increment: 0
             },
-            // playbackrate: {
-            //   create() {
-            //     console.log(this);
-            //   },
-            //   destroy() {
-            //     console.log('destroy');
-            //   },
-            //   list: [
-            //     {name: '0.5倍速', value: 0.5},
-            //     {name: '1倍速', value: 1, default: true},
-            //     {name: '2倍速', value: 2 /*, default: true */}
-            //   ]
-            // },
+            playbackrate: {
+              create() {
+                console.log(this);
+              },
+              destroy() {
+                console.log('destroy');
+              },
+              list: [
+                {name: '0.5倍速', value: 0.5},
+                {name: '1倍速', value: 1, default: true},
+                {name: '2倍速', value: 2 /*, default: true */}
+              ]
+            },
             // screen: {
             //   icon: {
             //     full: `
@@ -216,7 +216,8 @@
         }
       ],
       controls: true,
-      autoplay: true
+      autoplay: false,
+      preload: 'none'
     });
     // var player2 = new Chimee({
     //   wrapper: '#wrap2',
