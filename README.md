@@ -76,7 +76,18 @@ plugin: [{
   * 可选值： 十六进制颜色('#fff')
   * 默认值： '#4c4c4c'
   * 非必需
-
+### barShowByMouse
+  * 类型： string
+  * 作用：控制条显示由， move 还是 enter/leave 来控制显示／隐藏
+  * 可选值： 'move', 'enter'
+  * 默认值： 'move'
+  * 非必需
+### hideBarTime
+  * 类型： number
+  * 作用：hidebar 延迟时间
+  * 默认值： 2000
+  * 注意：barShowByMouse 为 move 时有效，enter 时为0， 用户设置无效
+  * 非必需
 #### children
   * 类型： Object
   * 含义： 配置子组件是否展示／展示方式，还可以自己扩展子组件
