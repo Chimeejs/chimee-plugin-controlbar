@@ -76,13 +76,15 @@ plugin: [{
   * 可选值： 十六进制颜色('#fff')
   * 默认值： '#4c4c4c'
   * 非必需
-### barShowByMouse
+#### barShowByMouse
   * 类型： string
-  * 作用：控制条显示由， move 还是 enter/leave 来控制显示／隐藏
+  * 作用：控制条显示由
+    * move 触发 播放器的 mousemove 显示 
+    * enter/levae 鼠标进入/出，来控制 控制条显示／隐藏
   * 可选值： 'move', 'enter'
   * 默认值： 'move'
   * 非必需
-### hideBarTime
+#### hideBarTime
   * 类型： number
   * 作用：hidebar 延迟时间
   * 默认值： 2000
