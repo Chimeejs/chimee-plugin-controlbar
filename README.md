@@ -76,7 +76,20 @@ plugin: [{
   * 可选值： 十六进制颜色('#fff')
   * 默认值： '#4c4c4c'
   * 非必需
-
+#### barShowByMouse
+  * 类型： string
+  * 作用：控制条显示由
+    * move 触发 播放器的 mousemove 显示 
+    * enter/levae 鼠标进入/出，来控制 控制条显示／隐藏
+  * 可选值： 'move', 'enter'
+  * 默认值： 'move'
+  * 非必需
+#### hideBarTime
+  * 类型： number
+  * 作用：hidebar 延迟时间
+  * 默认值： 2000
+  * 注意：barShowByMouse 为 move 时有效，enter 时为0， 用户设置无效
+  * 非必需
 #### children
   * 类型： Object
   * 含义： 配置子组件是否展示／展示方式，还可以自己扩展子组件
@@ -278,7 +291,7 @@ plugin: [{
         * 每次重复时递增的时间，单位为秒
         * 一般而言加载失败都是因为超时加载失败，故每次重复的时候应相应延长加载时间。每次重复加载都会相应叠加该值对应的时间。
       * immediate
-        * 类型：`Object`
+        * 类型：`boolean`
         * 默认：`false`
         * 新视频加载成功后是否立即切换无需等待到约定时间。
         * 注意空数组时不展示
