@@ -29,7 +29,8 @@ const defaultOption = {
   increment: 0,
   repeatTimes: 0,
   immediate: false,
-  abort: false
+  abort: false,
+  list: []
 };
 
 export default class Clarity extends Base {
@@ -50,11 +51,18 @@ export default class Clarity extends Base {
     // 用户自定义配置
     this.option.width && setStyle(this.$dom, 'width', this.option.width);
 
-    this.initTextList();
+    const list = this.option.list;
+    if(!list.length) {
+      return this.$dom.css({
+        display: 'none'
+      });
+    }
+    this.initTextList(this.option.list);
   }
 
-  initTextList () {
-    this.option.list.forEach(item => {
+  initTextList (list) {
+    this.$listUl.html('');
+    list.forEach(item => {
       const li = $(document.createElement('li'));
       li.attr('data-url', item.src);
       li.text(item.name);

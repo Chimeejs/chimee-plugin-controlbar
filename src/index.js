@@ -2,6 +2,7 @@ import './control.css';
 import {accessor, applyDecorators} from 'toxic-decorators';
 import {isObject, deepAssign, setStyle} from 'chimee-helper';
 import {createChild} from './createchild.js';
+import { isArray } from 'toxic-predicate-functions';
 
 const majorColorStyle = `
   .chimee-flex-component svg * {
@@ -247,6 +248,12 @@ const chimeeControl = {
       style.setAttribute('type', 'text/css');
       style.innerHTML = css;
       document.head.appendChild(style);
+    },
+    updateClarity (list) {
+      if(!isArray(list)) {
+        return console.error('list must be an array.');
+      }
+      this.children.clarity.initTextList(list);
     }
   }
 };
