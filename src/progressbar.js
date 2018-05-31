@@ -163,7 +163,7 @@ export default class ProgressBar extends Base {
     this.$tip.css('display', 'none');
   }
 
-  changePointerEvent () {
-    this.$wrap.css('pointerEvents', 'auto');
+  changePointerEvent (value) {
+    this.$wrap.css('pointerEvents', value);
   }
 }

@@ -90,6 +90,15 @@ const chimeeControl = {
     }
   },
   events: {
+    load () {
+      // update src 充值进度条/时间/播放状态
+      // load 的时候不会触发 pause(), 手动将控制条显示出来
+      this._showItself();
+      this._progressUpdate();
+      this.children.play && this.children.play.changeState('pause');
+      this.children.progressTime && this.children.progressTime.updateTotal();
+      this.children.progressBar && this.children.progressBar.changePointerEvent('none');
+    },
     loadstart () {
       this._disable(true);
     },
@@ -117,7 +126,7 @@ const chimeeControl = {
     },
     durationchange () {
       this.children.progressTime && this.children.progressTime.updateTotal();
-      this.children.progressBar && this.children.progressBar.changePointerEvent();
+      this.children.progressBar && this.children.progressBar.changePointerEvent('auto');
     },
     timeupdate () {
       this._progressUpdate();
