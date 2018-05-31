@@ -39,6 +39,9 @@ export default class Base {
   }
 
   removeAllEvent () {
+    if(!(this.$dom instanceof HTMLElement)) {
+      this.$dom = this.$dom[0];
+    }
     this.option.defaultEvent && Object.keys(this.option.defaultEvent).forEach(item => {
       const key = this.option.defaultEvent[item];
       this[key] = bind(this[key], this);

@@ -53,7 +53,7 @@ export default class Clarity extends Base {
 
     const list = this.option.list;
     if(!list.length) {
-      return this.$dom.css({
+      return setStyle(this.$dom, {
         display: 'none'
       });
     }

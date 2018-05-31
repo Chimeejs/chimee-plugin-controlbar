@@ -58,6 +58,9 @@ const chimeeControl = {
   },
   destroy () {
     window.clearTimeout(this.timeId);
+    for(const i in this.children) {
+      this.children[i].destroy();
+    }
   },
   inited () {
     const videoConfig = this.$videoConfig;
