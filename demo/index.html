@@ -25,14 +25,21 @@
     <div id="wrap2"></div>
   </body>
   <script src="../node_modules/chimee/lib/index.browser.js"></script>
+  <script src="../node_modules/chimee-kernel-hls/lib/index.browser.js"></script>
   <script src="../lib/index.browser.js"></script>
   <script>
     Chimee.install(chimeePluginControlbar);
     var player = new Chimee({
       wrapper: '#wrap',
-      src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4',
+      src: 'http://v.96koo.net/common/LzEvcmVsZWFzZS8yMDE4MDUzMC9NQmoycnhITUUzL01CajJyeEhNRTNfNjQwXzgwMA==_8446.m3u8',
       playbackRate: 0.5,
       isLive: false,
+      kernels: {
+        hls: {
+          handler: ChimeeKernelHls,
+          debug: true
+        }
+      },
       // plugin: [{
       //   name: chimeePluginControlbar.name,
       //   children: {
@@ -152,9 +159,9 @@
             // },
             clarity: {
               list: [
-                {name: '标清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_368b70a5d4f-c5cc-42ff-b442-004168fc86a3.mp4'},
-                {name: '高清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_369ed890f51-1c38-42a7-9ce2-828492660c60.mp4'},
-                {name: '原画', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4'}
+                {name: '标清', src: 'http://v.96koo.net/common/LzEvcmVsZWFzZS8yMDE4MDUzMC9NQmoycnhITUUzL01CajJyeEhNRTNfNjQwXzgwMA==_8446.m3u8'},
+                {name: '高清', src: 'http://v.96koo.net/common/LzEvcmVsZWFzZS8yMDE4MDUzMC9NQmoycnhITUUzL01CajJyeEhNRTNfOTYwXzEwMDA=_8446.m3u8'},
+                // {name: '原画', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4'}
               ],
               duration: 3,
               increment: 0
@@ -217,7 +224,7 @@
       ],
       controls: true,
       autoplay: false,
-      preload: 'none'
+      // preload: 'none'
     });
     // var player2 = new Chimee({
     //   wrapper: '#wrap2',

@@ -102,6 +102,12 @@ export default class ProgressBar extends Base {
     // const ballRight = ballRect.left + ballRect.width;
     // this.inBall = e.clientX <= ballRight && e.clientX >= ballLeft;
     if(e.target === this.$tip[0]) return;
+
+    // return when duration is NaN chimee#129
+    if(this.parent.duration !== this.parent.duration) {
+      console.error('isNaN(duration) === true');
+      return;
+    }
     this._currentTime = e.offsetX / this.$wrap[0].offsetWidth * this.parent.duration;
     // if(!this.inBall) this.update();
     this.startX = e.clientX;
