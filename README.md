@@ -18,7 +18,7 @@ import chimee from 'chimee';
 import chimeePluginControlbar from 'chimee-plugin-controlbar';
 
 // 安装插件
-chimee.install(chimeeControlbar);
+chimee.install(chimeePluginControlbar);
 const player = new chimee({
   // ...
   // 使用插件
