@@ -406,6 +406,23 @@ plugin: [{
     * 含义： 更新清晰度列表
     * 参数：Array 清晰度列表
 
+    配置 🌰
+
+    ```javascirpt
+    function updateClarity() {
+      player.load('http://yunxianchang.live.ujne7.com/vod-system-bj/103_368b70a5d4f-c5cc-42ff-b442-004168fc86a3.mp4');
+      player.on('load', function () { // 在 load 事件后
+        player.$plugins.chimeeControl.updateClarity([
+          {name: '标清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_368b70a5d4f-c5cc-42ff-b442-004168fc86a3.mp4'},
+          {name: '高清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_369ed890f51-1c38-42a7-9ce2-828492660c60.mp4'},
+          {name: '超清', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_370cc2f40bd-a39f-472a-884f-f44fcd9c5ae0.mp4'},
+          {name: '原画', src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4'}
+        ]);
+      });
+    }
+    ```
+
+
 ## 最后
 
 欢迎各位大佬使用。有什么问题／建议，随时提。
