@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/Chimeejs/chimee-plugin-controlbar#readme",
   "dependencies": {
-    "babel-eslint": "^9.0.0",
+    "babel-eslint": "^10.0.1",
     "chimee-helper": "git+https://github.com/Chimeejs/chimee-helper.git"
   },
   "devDependencies": {
@@ -45,19 +45,19 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "chimee": "^0.9.5",
-    "cssnano": "^3.10.0",
-    "postcss": "^6.0.14",
+    "chimee": "^0.11.0",
+    "cssnano": "^4.1.7",
+    "postcss": "^7.0.5",
     "postcss-cssnext": "^3.0.2",
-    "postcss-reporter": "^5.0.0",
-    "rollup": "^0.50.0",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-commonjs": "^8.2.6",
+    "postcss-reporter": "^6.0.0",
+    "rollup": "^0.67.0",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-postcss": "^0.5.5",
+    "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify": "^2.0.1",
-    "stylelint": "^8.2.0",
-    "stylelint-config-standard": "^17.0.0"
+    "rollup-plugin-uglify": "^6.0.0",
+    "stylelint": "^9.7.1",
+    "stylelint-config-standard": "^18.2.0"
   }
 }
