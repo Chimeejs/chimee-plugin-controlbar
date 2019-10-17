@@ -33,7 +33,7 @@
   "homepage": "https://github.com/Chimeejs/chimee-plugin-controlbar#readme",
   "dependencies": {
     "babel-eslint": "^9.0.0",
-    "chimee-helper": "git+https://github.com/Chimeejs/chimee-helper.git"
+    "chimee-helper": "^0.2.11"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
